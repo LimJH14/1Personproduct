@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문의하기 — CODEPRON</title>
+  <meta name="description" content="CODEPRON 서비스 관련 문의, 버그 제보, 기능 제안 등을 보내주세요. 자주 묻는 질문(FAQ)도 확인하세요.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #0d1117;
+      --bg-card:   #161b22;
+      --bg-card2:  #1c2333;
+      --border:    #30363d;
+      --accent:    #00d4aa;
+      --accent-dim:#00d4aa22;
+      --accent2:   #3b82f6;
+      --text:      #e6edf3;
+      --text-sub:  #8b949e;
+      --text-muted:#484f58;
+      --radius:    12px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7; min-height: 100vh; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.5px; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { color: var(--text-sub); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .btn-nav { background: var(--accent); color: #0d1117; font-weight: 600; font-size: 13px; padding: 8px 16px; border-radius: 8px; text-decoration: none; }
+
+    .page-hero { padding: 48px 0 36px; border-bottom: 1px solid var(--border); margin-bottom: 48px; }
+    .page-label { font-size: 11px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
+    .page-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 700; letter-spacing: -0.5px; margin-bottom: 12px; }
+    .page-sub { font-size: 16px; color: var(--text-sub); max-width: 480px; }
+
+    /* 문의 카드 */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 56px; }
+    .contact-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: border-color 0.2s; }
+    .contact-card:hover { border-color: var(--text-muted); }
+    .contact-card-icon { width: 40px; height: 40px; background: var(--accent-dim); border: 1px solid var(--accent); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .contact-card-icon svg { width: 20px; height: 20px; color: var(--accent); stroke: var(--accent); }
+    .contact-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+    .contact-card p { font-size: 13px; color: var(--text-sub); margin-bottom: 14px; line-height: 1.6; }
+    .contact-card a { display: inline-block; font-size: 13px; font-weight: 500; color: var(--accent); text-decoration: none; padding: 6px 14px; border: 1px solid var(--accent); border-radius: 7px; transition: background 0.15s; }
+    .contact-card a:hover { background: var(--accent-dim); }
+
+    /* FAQ */
+    .faq-section { margin-bottom: 64px; }
+    .faq-section h2 { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 24px; }
+    .faq-list { display: flex; flex-direction: column; gap: 2px; }
+    .faq-item { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .faq-item + .faq-item { margin-top: 8px; }
+    .faq-q { width: 100%; background: var(--bg-card); border: none; color: var(--text); font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500; text-align: left; padding: 18px 20px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; transition: background 0.15s; }
+    .faq-q:hover { background: var(--bg-card2); }
+    .faq-chevron { width: 16px; height: 16px; flex-shrink: 0; color: var(--text-muted); transition: transform 0.2s; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-a { background: var(--bg-card2); padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.2s; }
+    .faq-item.open .faq-a { max-height: 300px; padding: 16px 20px 20px; }
+    .faq-a p { font-size: 14px; color: var(--text-sub); line-height: 1.7; }
+    .faq-a a { color: var(--accent); text-decoration: none; }
+    .faq-a a:hover { text-decoration: underline; }
+
+    /* 피드백 섹션 */
+    .feedback-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 64px; text-align: center; }
+    .feedback-section h2 { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+    .feedback-section p { font-size: 14px; color: var(--text-sub); margin-bottom: 20px; }
+    .feedback-btn { display: inline-block; background: var(--accent); color: #0d1117; font-weight: 600; font-size: 14px; padding: 12px 24px; border-radius: 10px; text-decoration: none; transition: opacity 0.2s; }
+    .feedback-btn:hover { opacity: 0.88; }
+
+    footer { border-top: 1px solid var(--border); padding: 32px 0; margin-top: 0; text-align: center; }
+    footer p { font-size: 13px; color: var(--text-muted); }
+    footer a { color: var(--text-sub); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 600px) {
+      .nav-links a:not(.btn-nav) { display: none; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    *:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <nav>
+    <a href="/" class="nav-logo">CODE<span>PRON</span></a>
+    <div class="nav-links">
+      <a href="/#trainer">연습하기</a>
+      <a href="/guide.html">발음 가이드</a>
+      <a href="/contact.html">문의하기</a>
+      <a href="/" class="btn-nav">발음 연습</a>
+    </div>
+  </nav>
+</div>
+
+<div class="container">
+  <div class="page-hero">
+    <p class="page-label">고객 지원</p>
+    <h1 class="page-title">문의하기</h1>
+    <p class="page-sub">서비스 관련 질문, 버그 제보, 기능 제안 모두 환영합니다. 아래 FAQ에서 대부분의 답을 찾을 수 있어요.</p>
+  </div>
+
+  <!-- 문의 방법 -->
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+      </div>
+      <h3>이메일 문의</h3>
+      <p>일반 문의, 개인정보 관련 요청, 제휴 문의 등을 이메일로 보내주세요.</p>
+      <a href="mailto:support@codepron.com">이메일 보내기</a>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 8v4l3 3"/>
+        </svg>
+      </div>
+      <h3>응답 시간</h3>
+      <p>이메일 문의는 영업일 기준 1~3일 내에 답변 드립니다. 자주 묻는 질문은 아래 FAQ를 참조해 주세요.</p>
+      <a href="#faq">FAQ 바로가기</a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section" id="faq">
+    <h2>자주 묻는 질문 (FAQ)</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          마이크를 허용했는데 녹음이 안 돼요.
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>CODEPRON의 발음 인식 기능은 <strong>Google Chrome 또는 Microsoft Edge</strong> 브라우저에서 가장 잘 작동합니다. Safari는 일부 버전에서 지원이 제한될 수 있습니다. 브라우저 주소창 왼쪽의 자물쇠 아이콘을 클릭하여 마이크 권한이 '허용'으로 설정되어 있는지 확인해 주세요. Firefox는 현재 Web Speech API를 지원하지 않아 발음 인식이 작동하지 않습니다.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          발음 점수가 낮게 나오는데 제 발음이 정말 나쁜 건가요?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>점수는 브라우저의 음성 인식 정확도를 기반으로 계산되므로 절대적인 기준이 아닙니다. 주변 소음이 많거나 마이크 품질이 낮을 경우 점수가 낮게 나올 수 있습니다. 조용한 환경에서 마이크에 가까이 대고 말씀해 보세요. 또한 '원어민 발음 듣기' 버튼으로 목표 발음을 먼저 들어보시면 훨씬 도움이 됩니다.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          연습 기록이 갑자기 사라졌어요.
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>CODEPRON의 연습 기록은 브라우저의 <strong>로컬 저장소(localStorage)</strong>에 저장됩니다. 브라우저 캐시/쿠키/사이트 데이터를 삭제하거나, 시크릿(프라이빗) 모드를 사용하거나, 다른 기기/브라우저를 사용하면 기록에 접근할 수 없습니다. 현재는 클라우드 동기화 기능을 지원하지 않으며, 추후 업데이트를 통해 추가할 예정입니다.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          '내 스크립트' 기능은 어떻게 사용하나요?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>메인 페이지의 발음 연습 카드 상단에서 <strong>'내 스크립트'</strong> 탭을 선택하세요. 발표문, 영어 에세이, 회화 대본 등 연습하고 싶은 영어 텍스트를 붙여넣으면, 자동으로 문장 단위로 분리되어 순서대로 발음 연습을 할 수 있습니다. 모든 문장을 완료하면 전체 점수와 문장별 결과를 확인할 수 있습니다.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          스마트폰에서도 사용할 수 있나요?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>네, CODEPRON은 모바일 브라우저에서도 이용 가능합니다. 다만 Web Speech API 지원 여부가 기기 및 브라우저에 따라 다를 수 있습니다. <strong>Android의 Chrome 브라우저</strong>에서 가장 안정적으로 작동하며, iOS Safari는 일부 제한이 있을 수 있습니다. PC 환경에서 사용하시면 더 안정적인 발음 인식이 가능합니다.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          제 개인 정보는 어디에 저장되나요?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>CODEPRON은 서버에 사용자 데이터를 저장하지 않습니다. 연습 기록은 오직 사용자의 기기 내 브라우저 로컬 저장소에만 저장됩니다. 음성 데이터도 녹음·저장되지 않습니다. 자세한 내용은 <a href="/privacy.html">개인정보처리방침</a>을 참조하세요.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          원하는 발음 연습 문장을 추가하고 싶어요.
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>'내 스크립트' 기능을 통해 원하는 영어 텍스트를 직접 입력하여 연습할 수 있습니다. 발표 스크립트, 영화 대사, 뉴스 기사 등 어떤 영어 텍스트든 붙여넣으면 문장 단위로 연습 가능합니다. 기본 제공 연습 문장 추가 요청은 <a href="mailto:support@codepron.com">이메일</a>로 문의해 주세요.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 피드백 -->
+  <div class="feedback-section">
+    <h2>더 좋은 서비스를 만들고 싶어요</h2>
+    <p>사용하면서 불편하셨던 점, 개선됐으면 하는 기능, 칭찬할 점 — 모든 피드백이 CODEPRON을 발전시킵니다.</p>
+    <a href="mailto:support@codepron.com?subject=CODEPRON 피드백" class="feedback-btn">피드백 보내기</a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>
+      © 2026 CODEPRON &nbsp;·&nbsp;
+      <a href="/privacy.html">개인정보처리방침</a> &nbsp;·&nbsp;
+      <a href="/terms.html">이용약관</a> &nbsp;·&nbsp;
+      <a href="/contact.html">문의하기</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+</script>
+
+</body>
+</html>

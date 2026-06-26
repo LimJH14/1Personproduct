@@ -163,7 +163,7 @@
     }
     .btn-secondary:hover { border-color: var(--text-sub); background: var(--bg-card); }
 
-    /* ── 음파 애니메이션 (시그니처) ── */
+    /* ── 음파 애니메이션 ── */
     .waveform {
       display: flex;
       align-items: center;
@@ -196,7 +196,7 @@
       50%       { transform: scaleY(1); }
     }
 
-    /* ── 발음 측정기 카드 (메인 기능) ── */
+    /* ── 트레이너 카드 ── */
     .trainer-section { padding: 0 0 72px; }
     .section-label {
       font-size: 11px;
@@ -212,6 +212,36 @@
       border-radius: var(--radius-lg);
       overflow: hidden;
     }
+
+    /* ── 모드 토글 ── */
+    .mode-toggle {
+      display: flex;
+      gap: 6px;
+      padding: 16px 28px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-card2);
+    }
+    .mode-btn {
+      flex: 1;
+      padding: 9px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-sub);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .mode-btn.active {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .mode-btn:hover:not(.active) { border-color: var(--text-sub); color: var(--text); }
+
+    /* ── 트레이너 헤더 ── */
     .trainer-header {
       padding: 24px 28px 20px;
       border-bottom: 1px solid var(--border);
@@ -224,10 +254,7 @@
       font-size: 16px;
       font-weight: 600;
     }
-    .difficulty-select {
-      display: flex;
-      gap: 6px;
-    }
+    .difficulty-select { display: flex; gap: 6px; }
     .diff-btn {
       background: transparent;
       border: 1px solid var(--border);
@@ -246,7 +273,73 @@
     }
     .diff-btn:hover:not(.active) { border-color: var(--text-sub); color: var(--text); }
 
-    /* 예문 영역 */
+    /* ── 스크립트 입력 패널 ── */
+    .script-input-panel {
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .script-input-desc {
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+    .script-textarea {
+      width: 100%;
+      min-height: 140px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding: 14px;
+      resize: vertical;
+      transition: border-color 0.2s;
+    }
+    .script-textarea:focus { outline: none; border-color: var(--accent); }
+    .script-textarea::placeholder { color: var(--text-muted); }
+    .script-meta {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .script-count { font-size: 12px; color: var(--text-muted); }
+
+    /* ── 스크립트 진행 표시 ── */
+    .script-progress {
+      padding: 12px 28px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-card2);
+    }
+    .script-progress-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .script-progress-track {
+      flex: 1;
+      height: 4px;
+      background: var(--bg);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .script-progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: width 0.4s ease;
+    }
+
+    /* ── 예문 영역 ── */
     .sentence-area {
       padding: 32px 28px 24px;
       text-align: center;
@@ -284,7 +377,7 @@
       font-style: italic;
     }
 
-    /* 컨트롤 영역 */
+    /* ── 컨트롤 ── */
     .controls {
       padding: 0 28px 28px;
       display: flex;
@@ -318,14 +411,8 @@
       50%       { box-shadow: 0 0 0 12px #f8514900; }
     }
     .mic-btn svg { width: 28px; height: 28px; }
-    .mic-label {
-      font-size: 13px;
-      color: var(--text-sub);
-    }
-    .btn-row {
-      display: flex;
-      gap: 10px;
-    }
+    .mic-label { font-size: 13px; color: var(--text-sub); }
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
     .btn-sm {
       background: var(--bg-card2);
       border: 1px solid var(--border);
@@ -336,6 +423,7 @@
       border-radius: 8px;
       cursor: pointer;
       transition: all 0.15s;
+      font-family: 'Inter', sans-serif;
     }
     .btn-sm:hover { border-color: var(--text-sub); color: var(--text); }
     .btn-sm.accent {
@@ -345,7 +433,7 @@
     }
     .btn-sm.accent:hover { background: #00d4aa33; }
 
-    /* 결과 패널 */
+    /* ── 결과 패널 ── */
     .result-panel {
       margin: 0 28px 28px;
       background: var(--bg-card2);
@@ -386,11 +474,7 @@
     .score-circle.good .score-num { color: var(--green); }
     .score-label-sm { font-size: 10px; color: var(--text-muted); }
     .result-feedback { flex: 1; padding-left: 16px; }
-    .result-feedback h3 {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
+    .result-feedback h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
     .result-feedback p { font-size: 13px; color: var(--text-sub); line-height: 1.6; }
     .result-heard {
       margin-top: 14px;
@@ -399,8 +483,6 @@
     }
     .result-heard-label { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
     .result-heard-text  { font-size: 14px; color: var(--text-sub); font-style: italic; }
-
-    /* 점수 바 */
     .score-bars { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
     .score-bar-row { display: flex; align-items: center; gap: 10px; }
     .score-bar-label { font-size: 12px; color: var(--text-sub); width: 64px; flex-shrink: 0; }
@@ -411,14 +493,71 @@
       border-radius: 3px;
       overflow: hidden;
     }
-    .score-bar-fill {
-      height: 100%;
-      border-radius: 3px;
-      transition: width 0.8s ease;
-    }
+    .score-bar-fill { height: 100%; border-radius: 3px; transition: width 0.8s ease; }
     .score-bar-val { font-size: 12px; color: var(--text-sub); width: 32px; text-align: right; }
 
-    /* ── 오늘의 학습 팁 ── */
+    /* ── 스크립트 요약 패널 ── */
+    .script-summary-panel {
+      margin: 0 28px 28px;
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .summary-header { text-align: center; margin-bottom: 24px; }
+    .summary-score {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .summary-score.bad  { color: var(--red); }
+    .summary-score.ok   { color: var(--yellow); }
+    .summary-score.good { color: var(--green); }
+    .summary-score-label { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
+    .summary-subtitle {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      margin-top: 20px;
+    }
+    .script-sentence-list { display: flex; flex-direction: column; gap: 6px; }
+    .script-sentence-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+    }
+    .ssi-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      padding-top: 2px;
+      width: 20px;
+    }
+    .ssi-text { font-size: 13px; color: var(--text-sub); flex: 1; line-height: 1.5; }
+    .ssi-score {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .ssi-score.bad  { color: var(--red); }
+    .ssi-score.ok   { color: var(--yellow); }
+    .ssi-score.good { color: var(--green); }
+    .ssi-score.skip { color: var(--text-muted); }
+    .summary-actions { display: flex; gap: 10px; margin-top: 20px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── 학습 팁 ── */
     .tip-section { padding: 0 0 72px; }
     .tip-grid {
       display: grid;
@@ -443,12 +582,7 @@
     }
     .tip-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
     .tip-desc  { font-size: 13px; color: var(--text-sub); line-height: 1.6; }
-    .tip-example {
-      margin-top: 10px;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
+    .tip-example { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
     .tip-word {
       background: var(--bg-card2);
       border: 1px solid var(--border);
@@ -458,7 +592,7 @@
       border-radius: 6px;
     }
 
-    /* ── 통계 섹션 ── */
+    /* ── 통계 ── */
     .stats-section { padding: 0 0 72px; }
     .stats-grid {
       display: grid;
@@ -503,7 +637,9 @@
       justify-content: space-between;
       gap: 12px;
     }
-    .history-sentence { font-size: 13px; color: var(--text-sub); flex: 1; }
+    .history-info { flex: 1; min-width: 0; }
+    .history-sentence { font-size: 13px; color: var(--text-sub); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .history-meta { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
     .history-score {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 18px;
@@ -513,7 +649,16 @@
     .history-score.bad  { color: var(--red); }
     .history-score.ok   { color: var(--yellow); }
     .history-score.good { color: var(--green); }
-    .history-time { font-size: 11px; color: var(--text-muted); flex-shrink: 0; }
+    .mode-badge {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+    }
+    .mode-badge.basic  { background: var(--accent-dim); color: var(--accent); border: 1px solid #00d4aa33; }
+    .mode-badge.script { background: #3b82f622; color: var(--accent2); border: 1px solid #3b82f633; }
 
     /* ── 푸터 ── */
     footer {
@@ -524,24 +669,6 @@
     footer p { font-size: 13px; color: var(--text-muted); }
     footer a { color: var(--text-sub); text-decoration: none; }
     footer a:hover { color: var(--text); }
-
-    /* ── 반응형 ── */
-    @media (max-width: 600px) {
-      .trainer-header { flex-direction: column; align-items: flex-start; gap: 12px; }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-      .nav-links a:not(.btn-nav) { display: none; }
-      .result-top { flex-direction: column; align-items: flex-start; }
-      .result-feedback { padding-left: 0; margin-top: 12px; }
-    }
-
-    /* ── 접근성 ── */
-    @media (prefers-reduced-motion: reduce) {
-      .wave-bar, .hero-eyebrow::before, .mic-btn.recording { animation: none; }
-    }
-    *:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
 
     /* ── 광고 플레이스홀더 ── */
     .ad-slot {
@@ -556,7 +683,22 @@
       font-size: 12px;
       margin: 32px 0;
     }
-    /* 실제 운영 시 .ad-slot 내부에 애드센스 코드 삽입 */
+
+    /* ── 반응형 ── */
+    @media (max-width: 600px) {
+      .trainer-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links a:not(.btn-nav) { display: none; }
+      .result-top { flex-direction: column; align-items: flex-start; }
+      .result-feedback { padding-left: 0; margin-top: 12px; }
+      .mode-toggle { padding: 12px 16px; }
+      .script-input-panel, .sentence-area, .controls { padding-left: 16px; padding-right: 16px; }
+      .result-panel, .script-summary-panel { margin-left: 16px; margin-right: 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .wave-bar, .hero-eyebrow::before, .mic-btn.recording { animation: none; }
+    }
+    *:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   </style>
 </head>
 <body>
@@ -567,9 +709,9 @@
     <a href="/" class="nav-logo">CODE<span>PRON</span></a>
     <div class="nav-links">
       <a href="#trainer">연습하기</a>
-      <a href="#guide">발음 가이드</a>
+      <a href="guide.html">발음 가이드</a>
       <a href="#history">내 기록</a>
-      <a href="pricing.html" class="btn-nav">무료로 시작</a>
+      <a href="contact.html" class="btn-nav">문의하기</a>
     </div>
   </nav>
 </div>
@@ -596,7 +738,7 @@
     </div>
     <div class="hero-cta">
       <a href="#trainer" class="btn-primary">지금 발음 테스트하기</a>
-      <a href="#guide" class="btn-secondary">발음 가이드 보기</a>
+      <a href="guide.html" class="btn-secondary">발음 가이드 보기</a>
     </div>
   </section>
 </div>
@@ -606,15 +748,21 @@
   <div class="ad-slot"><!-- Google AdSense 상단 광고 영역 --></div>
 </div>
 
-<!-- ── 발음 측정기 (핵심 기능) ── -->
+<!-- ── 발음 측정기 ── -->
 <div class="container">
   <section class="trainer-section" id="trainer">
     <p class="section-label">발음 점수 측정기</p>
 
     <div class="trainer-card">
 
-      <!-- 헤더: 난이도 선택 -->
-      <div class="trainer-header">
+      <!-- 모드 토글 -->
+      <div class="mode-toggle">
+        <button class="mode-btn active" onclick="setMode('basic', this)">기본 연습</button>
+        <button class="mode-btn" onclick="setMode('script', this)">내 스크립트</button>
+      </div>
+
+      <!-- 기본 모드: 난이도 헤더 -->
+      <div class="trainer-header" id="trainer-header">
         <span class="trainer-title">오늘의 발음 연습</span>
         <div class="difficulty-select">
           <button class="diff-btn active" data-level="easy"   onclick="setLevel('easy',this)">입문</button>
@@ -623,19 +771,39 @@
         </div>
       </div>
 
-      <!-- 예문 표시 -->
-      <div class="sentence-area">
-        <p class="sentence-hint">아래 문장을 소리 내어 읽으세요</p>
-        <div id="sentence-display">
-          <!-- JS로 단어별 span 생성 -->
+      <!-- 스크립트 모드: 입력 패널 -->
+      <div class="script-input-panel" id="script-input-panel" style="display:none">
+        <p class="script-input-desc">발표문, 영어 에세이, 회화 대본 등 연습하고 싶은 영어 텍스트를 붙여넣으세요. 문장 단위로 자동 분리되어 순서대로 발음 연습합니다.</p>
+        <textarea
+          class="script-textarea"
+          id="script-textarea"
+          placeholder="예) Good morning everyone. Today I will present about renewable energy. Let me start with a brief overview of the current situation."
+          oninput="updateScriptCount()"
+        ></textarea>
+        <div class="script-meta">
+          <span class="script-count" id="script-count">문장 감지: 0개</span>
+          <button class="btn-primary" onclick="startScript()" style="font-size:13px;padding:9px 20px">연습 시작</button>
         </div>
+      </div>
+
+      <!-- 스크립트 모드: 진행 표시 -->
+      <div class="script-progress" id="script-progress" style="display:none">
+        <span class="script-progress-label" id="script-progress-label">1 / 1 문장</span>
+        <div class="script-progress-track">
+          <div class="script-progress-fill" id="script-progress-fill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <!-- 예문 표시 -->
+      <div class="sentence-area" id="sentence-area">
+        <p class="sentence-hint" id="sentence-hint">아래 문장을 소리 내어 읽으세요</p>
+        <div id="sentence-display"></div>
         <p class="sentence-phonetics" id="phonetics-display"></p>
       </div>
 
       <!-- 마이크 컨트롤 -->
-      <div class="controls">
+      <div class="controls" id="controls-area">
         <button class="mic-btn" id="mic-btn" onclick="toggleRecording()" aria-label="녹음 시작">
-          <!-- 마이크 아이콘 -->
           <svg id="mic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 2a3 3 0 0 1 3 3v7a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/>
             <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
@@ -645,7 +813,7 @@
         </button>
         <p class="mic-label" id="mic-label">클릭해서 녹음 시작</p>
         <div class="btn-row">
-          <button class="btn-sm" onclick="nextSentence()">다음 문장</button>
+          <button class="btn-sm" id="next-btn" onclick="nextSentence()">다음 문장</button>
           <button class="btn-sm accent" onclick="playSample()">원어민 발음 듣기</button>
           <button class="btn-sm" onclick="resetResult()">초기화</button>
         </div>
@@ -663,9 +831,7 @@
             <p id="result-desc">발음하면 결과가 표시됩니다.</p>
           </div>
         </div>
-
-        <!-- 세부 점수 바 -->
-        <div class="score-bars" id="score-bars">
+        <div class="score-bars">
           <div class="score-bar-row">
             <span class="score-bar-label">정확도</span>
             <div class="score-bar-track"><div class="score-bar-fill" id="bar-accuracy" style="width:0%;background:var(--accent)"></div></div>
@@ -677,11 +843,23 @@
             <span class="score-bar-val" id="val-words">0%</span>
           </div>
         </div>
-
-        <!-- AI가 들은 내용 -->
         <div class="result-heard">
           <p class="result-heard-label">AI가 인식한 발음</p>
           <p class="result-heard-text" id="heard-text">—</p>
+        </div>
+      </div>
+
+      <!-- 스크립트 요약 패널 -->
+      <div class="script-summary-panel" id="script-summary-panel" style="display:none">
+        <div class="summary-header">
+          <div class="summary-score" id="summary-score">--</div>
+          <div class="summary-score-label">전체 평균 점수</div>
+        </div>
+        <p class="summary-subtitle">문장별 결과</p>
+        <div class="script-sentence-list" id="script-sentence-list"></div>
+        <div class="summary-actions">
+          <button class="btn-sm accent" onclick="restartScript()">처음부터 다시</button>
+          <button class="btn-sm" onclick="clearScript()">새 스크립트</button>
         </div>
       </div>
 
@@ -694,11 +872,10 @@
   <div class="ad-slot"><!-- Google AdSense 중간 광고 영역 --></div>
 </div>
 
-<!-- ── 한국인 취약 발음 가이드 ── -->
+<!-- ── 발음 가이드 ── -->
 <div class="container">
   <section class="tip-section" id="guide">
     <p class="section-label">한국인 취약 발음 가이드</p>
-
     <div class="tip-grid">
       <div class="tip-card">
         <div class="tip-sound">L / R</div>
@@ -741,7 +918,6 @@
         </div>
       </div>
     </div>
-
     <div style="text-align:center; margin-top:28px;">
       <a href="guide.html" class="btn-secondary" style="display:inline-block;">전체 발음 가이드 보기 →</a>
     </div>
@@ -799,7 +975,7 @@
 <!-- ── JavaScript ── -->
 <script>
   /* ══════════════════════════════════════
-     예문 데이터베이스
+     예문 데이터베이스 (30개)
   ══════════════════════════════════════ */
   const SENTENCES = {
     easy: [
@@ -808,25 +984,52 @@
       { text: "Think about three things.", phonetics: "/θɪŋk əˈbaʊt θriː θɪŋz/", focus: "TH 발음" },
       { text: "Very beautiful view.", phonetics: "/ˈvɛri ˈbjuːtɪfəl vjuː/", focus: "V 발음" },
       { text: "Please look at the river.", phonetics: "/pliːz lʊk æt ðə ˈrɪvər/", focus: "L/R/P" },
+      { text: "The big blue bird flew by.", phonetics: "/ðə bɪg bluː bɜːrd fluː baɪ/", focus: "B, FL" },
+      { text: "Five friends found fine food.", phonetics: "/faɪv frɛndz faʊnd faɪn fuːd/", focus: "F 반복" },
+      { text: "Look at the little yellow flower.", phonetics: "/lʊk æt ðə ˈlɪtəl ˈjɛloʊ ˈflaʊər/", focus: "L, FL" },
+      { text: "My voice vibrates very well.", phonetics: "/maɪ vɔɪs ˈvaɪbreɪts ˈvɛri wɛl/", focus: "V 반복" },
+      { text: "Both brothers build beautiful bridges.", phonetics: "/boʊθ ˈbrʌðərz bɪld ˈbjuːtɪfəl ˈbrɪdʒɪz/", focus: "B, R, TH" },
+      { text: "The thin thread is three feet long.", phonetics: "/ðə θɪn θrɛd ɪz θriː fiːt lɔːŋ/", focus: "TH, F" },
+      { text: "Please feel free to follow me.", phonetics: "/pliːz fiːl friː tə ˈfɒloʊ miː/", focus: "FL, F/P" },
     ],
     normal: [
       { text: "The rain in Spain falls mainly on the plain.", phonetics: "/ðə reɪn ɪn speɪn fɔːlz ˈmeɪnli ɒn ðə pleɪn/", focus: "R, 장모음" },
       { text: "Fresh vegetables are full of vitamins.", phonetics: "/frɛʃ ˈvɛdʒtəbəlz ər fʊl əv ˈvaɪtəmɪnz/", focus: "F/V, R" },
       { text: "Three thousand thoughts through the night.", phonetics: "/θriː ˈθaʊzənd θɔːts θruː ðə naɪt/", focus: "TH 반복" },
       { text: "Rural roads really relax me.", phonetics: "/ˈrʊərəl roʊdz ˈrɪəli rɪˈlæks miː/", focus: "R 집중" },
+      { text: "The law requires a very thorough review.", phonetics: "/ðə lɔː rɪˈkwaɪərz ə ˈvɛri ˈθʌrə rɪˈvjuː/", focus: "L/R, TH, V" },
+      { text: "Valuable velvet vests were very expensive.", phonetics: "/ˈvæljuəbəl ˈvɛlvɪt vɛsts wɜːr ˈvɛri ɪkˈspɛnsɪv/", focus: "V 반복" },
+      { text: "She carefully filled the flask with fresh water.", phonetics: "/ʃiː ˈkɛərfəli fɪld ðə flæsk wɪð frɛʃ ˈwɔːtər/", focus: "F, L" },
+      { text: "The professor praised his thoughtful presentation.", phonetics: "/ðə prəˈfɛsər preɪzd hɪz ˈθɔːtfəl ˌprɛzənˈteɪʃən/", focus: "F/P, TH, R" },
+      { text: "Breathing through your nose helps relieve stress.", phonetics: "/ˈbriːðɪŋ θruː jɔːr noʊz hɛlps rɪˈliːv strɛs/", focus: "TH, R, L" },
+      { text: "The village festival featured live performances.", phonetics: "/ðə ˈvɪlɪdʒ ˈfɛstɪvəl ˈfiːtʃərd laɪv pərˈfɔːrmənsɪz/", focus: "V, F, L/R" },
     ],
     hard: [
       { text: "Whether the weather is fine or whether the weather is not.", phonetics: "/ˈwɛðər ðə ˈwɛðər ɪz faɪn ɔːr ˈwɛðər ðə ˈwɛðər ɪz nɒt/", focus: "TH, W" },
       { text: "Red lorry, yellow lorry, red lorry, yellow lorry.", phonetics: "/rɛd ˈlɒri, ˈjɛloʊ ˈlɒri/", focus: "L/R 교대" },
       { text: "The thirty-three thieves thought they thrilled the throne.", phonetics: "/ðə ˌθɜːrtiˈθriː θiːvz θɔːt ðeɪ θrɪld ðə θroʊn/", focus: "TH 집중" },
+      { text: "The veteran reviewed every relevant revelation very thoroughly.", phonetics: "/ðə ˈvɛtərən rɪˈvjuːd ˈɛvri ˈrɛlɪvənt ˌrɛvəˈleɪʃən ˈvɛri ˈθʌrəli/", focus: "V, R, TH" },
+      { text: "Freshly fried fresh flesh makes Fred feel free.", phonetics: "/ˈfrɛʃli fraɪd frɛʃ flɛʃ meɪks frɛd fiːl friː/", focus: "F, R, L" },
+      { text: "The thoroughly thoughtful philosopher thrived throughout the struggle.", phonetics: "/ðə ˈθʌrəli ˈθɔːtfəl fɪˈlɒsəfər θraɪvd θruːˈaʊt ðə ˈstrʌɡəl/", focus: "TH, F, L" },
+      { text: "She sells seashells by the seashore, the shells she sells are surely seashells.", phonetics: "/ʃiː sɛlz ˈsiːʃɛlz baɪ ðə ˈsiːʃɔːr/", focus: "S, SH, L" },
     ]
   };
 
-  let currentLevel    = 'easy';
-  let currentIdx      = 0;
-  let isRecording     = false;
-  let recognition     = null;
-  let sessionHistory  = JSON.parse(localStorage.getItem('codepron_history') || '[]');
+  /* ══════════════════════════════════════
+     상태 변수
+  ══════════════════════════════════════ */
+  let currentMode    = 'basic';
+  let currentLevel   = 'easy';
+  let currentIdx     = 0;
+  let isRecording    = false;
+  let recognition    = null;
+
+  // 스크립트 모드
+  let customSentences = []; // [{text, score}]
+  let scriptIdx       = 0;
+
+  // 히스토리 (localStorage)
+  let sessionHistory = JSON.parse(localStorage.getItem('codepron_history') || '[]');
 
   /* ══════════════════════════════════════
      초기화
@@ -849,6 +1052,31 @@
 
     document.getElementById('phonetics-display').textContent = `${s.phonetics} · 포커스: ${s.focus}`;
     document.getElementById('result-panel').classList.remove('show');
+    document.getElementById('sentence-hint').textContent = '아래 문장을 소리 내어 읽으세요';
+  }
+
+  /* ══════════════════════════════════════
+     모드 전환
+  ══════════════════════════════════════ */
+  function setMode(mode, btn) {
+    currentMode = mode;
+    document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const isScript = mode === 'script';
+
+    document.getElementById('trainer-header').style.display     = isScript ? 'none' : '';
+    document.getElementById('script-input-panel').style.display = isScript ? '' : 'none';
+    document.getElementById('script-progress').style.display    = 'none';
+    document.getElementById('sentence-area').style.display      = isScript ? 'none' : '';
+    document.getElementById('controls-area').style.display      = isScript ? 'none' : '';
+    document.getElementById('result-panel').classList.remove('show');
+    document.getElementById('script-summary-panel').style.display = 'none';
+
+    if (mode === 'basic') {
+      loadSentence();
+      document.getElementById('next-btn').textContent = '다음 문장';
+    }
   }
 
   /* ══════════════════════════════════════
@@ -866,32 +1094,187 @@
      다음 문장
   ══════════════════════════════════════ */
   function nextSentence() {
+    if (currentMode === 'script') {
+      nextScriptSentence();
+      return;
+    }
     currentIdx++;
     loadSentence();
     resetResult();
   }
 
   /* ══════════════════════════════════════
-     초기화
+     스크립트 모드
+  ══════════════════════════════════════ */
+  function updateScriptCount() {
+    const text = document.getElementById('script-textarea').value.trim();
+    const sents = parseTextToSentences(text);
+    document.getElementById('script-count').textContent =
+      text ? `문장 감지: ${sents.length}개` : '문장 감지: 0개';
+  }
+
+  function parseTextToSentences(text) {
+    if (!text.trim()) return [];
+
+    // 줄바꿈이 여러 개면 줄 단위로 분리
+    const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 3 && /[a-zA-Z]/.test(l));
+    if (lines.length > 1) {
+      const result = [];
+      for (const line of lines) {
+        const matches = line.match(/[^.!?]*[.!?]+/g);
+        if (matches && matches.length > 1) {
+          result.push(...matches.map(s => s.trim()).filter(s => s.length > 3 && /[a-zA-Z]/.test(s)));
+        } else {
+          result.push(line);
+        }
+      }
+      return result;
+    }
+
+    // 단일 문단: 마침표/느낌표/물음표로 분리
+    const matches = text.trim().match(/[^.!?]*[.!?]+/g);
+    if (matches) {
+      return matches.map(s => s.trim()).filter(s => s.length > 3 && /[a-zA-Z]/.test(s));
+    }
+    return text.trim().length > 3 ? [text.trim()] : [];
+  }
+
+  function startScript() {
+    const text = document.getElementById('script-textarea').value.trim();
+    const sents = parseTextToSentences(text);
+
+    if (!sents.length) {
+      alert('연습할 영어 문장을 입력해주세요.');
+      return;
+    }
+
+    customSentences = sents.map(t => ({ text: t, score: null }));
+    scriptIdx = 0;
+
+    document.getElementById('script-input-panel').style.display  = 'none';
+    document.getElementById('script-progress').style.display     = '';
+    document.getElementById('sentence-area').style.display       = '';
+    document.getElementById('controls-area').style.display       = '';
+    document.getElementById('script-summary-panel').style.display = 'none';
+    document.getElementById('result-panel').classList.remove('show');
+
+    loadScriptSentence();
+  }
+
+  function loadScriptSentence() {
+    const s     = customSentences[scriptIdx];
+    const total = customSentences.length;
+
+    document.getElementById('script-progress-label').textContent = `${scriptIdx + 1} / ${total} 문장`;
+    document.getElementById('script-progress-fill').style.width  = `${(scriptIdx / total) * 100}%`;
+
+    const display = document.getElementById('sentence-display');
+    display.innerHTML = s.text.split(' ').map(w =>
+      `<span class="word" data-word="${w.replace(/[^a-zA-Z']/g,'').toLowerCase()}">${w}</span>`
+    ).join(' ');
+
+    document.getElementById('phonetics-display').textContent = '';
+    document.getElementById('sentence-hint').textContent = '스크립트 연습 · 문장을 소리 내어 읽으세요';
+    document.getElementById('result-panel').classList.remove('show');
+    resetResult();
+
+    document.getElementById('next-btn').textContent =
+      scriptIdx < customSentences.length - 1 ? '다음 문장' : '결과 보기';
+  }
+
+  function nextScriptSentence() {
+    if (scriptIdx < customSentences.length - 1) {
+      scriptIdx++;
+      loadScriptSentence();
+    } else {
+      showScriptSummary();
+    }
+  }
+
+  function showScriptSummary() {
+    document.getElementById('sentence-area').style.display        = 'none';
+    document.getElementById('controls-area').style.display        = 'none';
+    document.getElementById('script-progress').style.display      = 'none';
+    document.getElementById('result-panel').classList.remove('show');
+
+    const panel = document.getElementById('script-summary-panel');
+    panel.style.display = '';
+
+    const scores   = customSentences.map(s => s.score).filter(s => s !== null);
+    const avgScore = scores.length
+      ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)
+      : 0;
+
+    const scoreEl = document.getElementById('summary-score');
+    scoreEl.textContent = avgScore;
+    scoreEl.className   = 'summary-score ' + (avgScore >= 80 ? 'good' : avgScore >= 55 ? 'ok' : 'bad');
+
+    document.getElementById('script-sentence-list').innerHTML = customSentences.map((s, i) => {
+      const grade     = s.score === null ? 'skip' : s.score >= 80 ? 'good' : s.score >= 55 ? 'ok' : 'bad';
+      const scoreText = s.score === null ? '건너뜀' : `${s.score}점`;
+      const short     = s.text.length > 55 ? s.text.slice(0, 55) + '…' : s.text;
+      return `
+        <div class="script-sentence-item">
+          <span class="ssi-num">${i + 1}</span>
+          <span class="ssi-text">${short}</span>
+          <span class="ssi-score ${grade}">${scoreText}</span>
+        </div>`;
+    }).join('');
+
+    // 히스토리 저장
+    const title = customSentences[0].text.slice(0, 28) + (customSentences[0].text.length > 28 ? '…' : '');
+    saveHistory(`[스크립트] ${title}`, avgScore, 'script');
+
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function restartScript() {
+    customSentences = customSentences.map(s => ({ text: s.text, score: null }));
+    scriptIdx = 0;
+    document.getElementById('script-summary-panel').style.display = 'none';
+    document.getElementById('script-progress').style.display      = '';
+    document.getElementById('sentence-area').style.display        = '';
+    document.getElementById('controls-area').style.display        = '';
+    loadScriptSentence();
+  }
+
+  function clearScript() {
+    customSentences = [];
+    scriptIdx       = 0;
+    document.getElementById('script-summary-panel').style.display = 'none';
+    document.getElementById('script-input-panel').style.display   = '';
+    document.getElementById('script-textarea').value              = '';
+    document.getElementById('script-count').textContent           = '문장 감지: 0개';
+    document.getElementById('sentence-area').style.display        = 'none';
+    document.getElementById('controls-area').style.display        = 'none';
+    document.getElementById('script-progress').style.display      = 'none';
+  }
+
+  /* ══════════════════════════════════════
+     초기화 (결과만)
   ══════════════════════════════════════ */
   function resetResult() {
     document.getElementById('result-panel').classList.remove('show');
     document.querySelectorAll('#sentence-display .word').forEach(w => {
-      w.classList.remove('correct','wrong','partial');
+      w.classList.remove('correct', 'wrong', 'partial');
     });
   }
 
   /* ══════════════════════════════════════
-     원어민 발음 재생 (Web Speech Synthesis)
+     원어민 발음 재생
   ══════════════════════════════════════ */
   function playSample() {
-    const list = SENTENCES[currentLevel];
-    const s    = list[currentIdx];
-    const utt  = new SpeechSynthesisUtterance(s.text);
-    utt.lang  = 'en-US';
-    utt.rate  = 0.85;
-    utt.pitch = 1;
-    // 영어 음성 선택 (있을 경우)
+    let text;
+    if (currentMode === 'script') {
+      if (!customSentences.length) return;
+      text = customSentences[scriptIdx].text;
+    } else {
+      text = SENTENCES[currentLevel][currentIdx].text;
+    }
+    const utt    = new SpeechSynthesisUtterance(text);
+    utt.lang     = 'en-US';
+    utt.rate     = 0.85;
+    utt.pitch    = 1;
     const voices = speechSynthesis.getVoices().filter(v => v.lang.startsWith('en'));
     if (voices.length) utt.voice = voices[0];
     speechSynthesis.speak(utt);
@@ -901,25 +1284,20 @@
      녹음 토글
   ══════════════════════════════════════ */
   function toggleRecording() {
-    if (isRecording) {
-      stopRecording();
-    } else {
-      startRecording();
-    }
+    isRecording ? stopRecording() : startRecording();
   }
 
   function startRecording() {
-    // Web Speech API 지원 확인
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SpeechRecognition) {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) {
       alert('이 브라우저는 음성 인식을 지원하지 않습니다. Chrome 브라우저를 사용해주세요.');
       return;
     }
 
-    recognition = new SpeechRecognition();
-    recognition.lang          = 'en-US';
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 3;
+    recognition = new SR();
+    recognition.lang             = 'en-US';
+    recognition.interimResults   = false;
+    recognition.maxAlternatives  = 3;
 
     recognition.onstart = () => {
       isRecording = true;
@@ -935,7 +1313,6 @@
     };
 
     recognition.onerror = (e) => {
-      console.error('Speech recognition error:', e.error);
       stopRecording();
       if (e.error === 'not-allowed') {
         alert('마이크 사용 권한이 필요합니다. 브라우저 설정에서 마이크를 허용해주세요.');
@@ -944,10 +1321,7 @@
       }
     };
 
-    recognition.onend = () => {
-      stopRecording();
-    };
-
+    recognition.onend = () => { stopRecording(); };
     recognition.start();
   }
 
@@ -960,62 +1334,61 @@
   }
 
   /* ══════════════════════════════════════
-     발음 분석 엔진
+     발음 분석
   ══════════════════════════════════════ */
   function analyzeResult(spoken) {
-    const list   = SENTENCES[currentLevel];
-    const target = list[currentIdx].text;
+    const target = currentMode === 'script'
+      ? customSentences[scriptIdx].text
+      : SENTENCES[currentLevel][currentIdx].text;
 
-    // 텍스트 정규화 함수
-    const normalize = (str) =>
-      str.toLowerCase().replace(/[^a-z\s]/g, '').trim();
+    const normalize = str => str.toLowerCase().replace(/[^a-z\s]/g, '').trim();
 
     const targetWords = normalize(target).split(/\s+/);
     const spokenWords = normalize(spoken).split(/\s+/);
+    const wordSpans   = document.querySelectorAll('#sentence-display .word');
 
-    // 단어별 매칭
     let correctCount = 0;
-    const wordSpans  = document.querySelectorAll('#sentence-display .word');
-
-    wordSpans.forEach((span, i) => {
-      const tw = normalize(span.dataset.word || span.textContent);
-      // 들린 단어 중 일치하는 것 찾기
+    wordSpans.forEach((span) => {
+      const tw    = normalize(span.dataset.word || span.textContent);
       const found = spokenWords.some(sw => {
         if (sw === tw) return true;
-        // 유사도 검사 (1글자 차이까지 허용)
         return levenshtein(sw, tw) <= 1 && tw.length > 2;
       });
-
-      span.classList.remove('correct','wrong','partial');
+      span.classList.remove('correct', 'wrong', 'partial');
       if (found) {
         span.classList.add('correct');
         correctCount++;
       } else {
-        // 부분 매칭 (단어 일부 포함)
         const partMatch = spokenWords.some(sw =>
-          sw.includes(tw.slice(0,3)) || tw.includes(sw.slice(0,3))
+          sw.includes(tw.slice(0, 3)) || tw.includes(sw.slice(0, 3))
         );
         span.classList.add(partMatch ? 'partial' : 'wrong');
       }
     });
 
-    // 점수 계산
     const wordAccuracy = Math.round((correctCount / targetWords.length) * 100);
     const charScore    = calcCharScore(normalize(spoken), normalize(target));
     const totalScore   = Math.round((wordAccuracy * 0.6) + (charScore * 0.4));
 
-    // 결과 표시
+    // 스크립트 모드: 현재 문장 점수 저장
+    if (currentMode === 'script') {
+      customSentences[scriptIdx].score = totalScore;
+      const total = customSentences.length;
+      document.getElementById('script-progress-fill').style.width =
+        `${((scriptIdx + 1) / total) * 100}%`;
+    }
+
     showResult(totalScore, wordAccuracy, charScore, spoken);
 
-    // 히스토리 저장
-    saveHistory(target, totalScore);
+    if (currentMode === 'basic') {
+      saveHistory(target, totalScore, 'basic');
+    }
   }
 
-  // 레벤슈타인 거리 (유사도 측정)
   function levenshtein(a, b) {
     const m = a.length, n = b.length;
-    const dp = Array.from({length: m+1}, (_,i) =>
-      Array.from({length: n+1}, (_,j) => i === 0 ? j : j === 0 ? i : 0)
+    const dp = Array.from({ length: m + 1 }, (_, i) =>
+      Array.from({ length: n + 1 }, (_, j) => i === 0 ? j : j === 0 ? i : 0)
     );
     for (let i = 1; i <= m; i++) {
       for (let j = 1; j <= n; j++) {
@@ -1027,23 +1400,19 @@
     return dp[m][n];
   }
 
-  // 문자열 유사도 점수 (0~100)
   function calcCharScore(spoken, target) {
     const maxLen = Math.max(spoken.length, target.length);
     if (maxLen === 0) return 100;
-    const dist = levenshtein(spoken, target);
-    return Math.max(0, Math.round((1 - dist / maxLen) * 100));
+    return Math.max(0, Math.round((1 - levenshtein(spoken, target) / maxLen) * 100));
   }
 
   /* ══════════════════════════════════════
-     결과 UI 표시
+     결과 UI
   ══════════════════════════════════════ */
   function showResult(total, wordAcc, charScore, spoken) {
     const panel  = document.getElementById('result-panel');
     const circle = document.getElementById('score-circle');
-    const numEl  = document.getElementById('score-num');
 
-    // 점수 등급
     let grade, title, desc;
     if (total >= 80) {
       grade = 'good';
@@ -1052,24 +1421,21 @@
     } else if (total >= 55) {
       grade = 'ok';
       title = '꽤 잘 하셨어요!';
-      desc  = '몇몇 단어를 더 또렷하게 발음하면 훨씬 좋아질 거예요. 틀린 단어(빨간색)를 집중 연습해보세요.';
+      desc  = '몇몇 단어를 더 또렷하게 발음하면 훨씬 좋아질 거예요. 빨간 단어를 집중 연습해보세요.';
     } else {
       grade = 'bad';
       title = '조금 더 연습해봐요';
-      desc  = '괜찮아요! 위의 발음 가이드를 참고해서 천천히 따라 해보세요. 원어민 발음 듣기도 활용해보세요.';
+      desc  = '원어민 발음 듣기로 목표 발음을 먼저 들어보고, 발음 가이드도 참고해보세요.';
     }
 
     circle.className = `score-circle ${grade}`;
-    numEl.textContent = total;
-
+    document.getElementById('score-num').textContent    = total;
     document.getElementById('result-title').textContent = title;
     document.getElementById('result-desc').textContent  = desc;
 
-    // 바 차트
     setBar('accuracy', charScore);
-    setBar('words', wordAcc);
+    setBar('words',    wordAcc);
 
-    // AI가 들은 텍스트
     document.getElementById('heard-text').textContent =
       spoken ? `"${spoken}"` : '인식된 내용이 없습니다.';
 
@@ -1078,21 +1444,24 @@
   }
 
   function setBar(id, val) {
-    document.getElementById(`bar-${id}`).style.width  = `${val}%`;
-    document.getElementById(`val-${id}`).textContent  = `${val}%`;
+    document.getElementById(`bar-${id}`).style.width = `${val}%`;
+    document.getElementById(`val-${id}`).textContent = `${val}%`;
   }
 
   /* ══════════════════════════════════════
-     히스토리 저장 / 렌더
+     히스토리
   ══════════════════════════════════════ */
-  function saveHistory(sentence, score) {
+  function saveHistory(sentence, score, mode) {
+    const now  = new Date();
     const item = {
       sentence,
       score,
-      time: new Date().toLocaleTimeString('ko-KR', {hour:'2-digit', minute:'2-digit'})
+      mode: mode || 'basic',
+      time: now.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' }),
+      date: now.toLocaleDateString('ko-KR', { month: 'short', day: 'numeric' })
     };
     sessionHistory.unshift(item);
-    if (sessionHistory.length > 20) sessionHistory.pop();
+    if (sessionHistory.length > 30) sessionHistory.pop();
     localStorage.setItem('codepron_history', JSON.stringify(sessionHistory));
     renderHistory();
     updateStats();
@@ -1104,18 +1473,19 @@
       list.innerHTML = '<div class="history-empty">아직 연습 기록이 없어요.<br>위에서 발음 연습을 시작해보세요!</div>';
       return;
     }
-    list.innerHTML = sessionHistory.slice(0, 8).map(item => {
+    list.innerHTML = sessionHistory.slice(0, 10).map(item => {
       const grade = item.score >= 80 ? 'good' : item.score >= 55 ? 'ok' : 'bad';
-      const short = item.sentence.length > 40
-        ? item.sentence.slice(0, 40) + '…'
-        : item.sentence;
+      const mode  = item.mode === 'script' ? 'script' : 'basic';
+      const label = item.mode === 'script' ? '스크립트' : '기본';
       return `
         <div class="history-item">
-          <span class="history-sentence">${short}</span>
+          <div class="history-info">
+            <div class="history-sentence">${item.sentence}</div>
+            <div class="history-meta">${item.date} ${item.time}</div>
+          </div>
+          <span class="mode-badge ${mode}">${label}</span>
           <span class="history-score ${grade}">${item.score}점</span>
-          <span class="history-time">${item.time}</span>
-        </div>
-      `;
+        </div>`;
     }).join('');
   }
 
@@ -1123,20 +1493,19 @@
     document.getElementById('stat-total').textContent = sessionHistory.length;
     if (!sessionHistory.length) return;
     const scores = sessionHistory.map(h => h.score);
-    const avg    = Math.round(scores.reduce((a,b) => a+b, 0) / scores.length);
+    const avg    = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
     const best   = Math.max(...scores);
     document.getElementById('stat-avg').textContent  = avg  + '점';
     document.getElementById('stat-best').textContent = best + '점';
   }
 
   /* ══════════════════════════════════════
-     음성 목록 로드 (SpeechSynthesis 초기화)
+     음성 목록 초기화
   ══════════════════════════════════════ */
   if (typeof speechSynthesis !== 'undefined') {
     speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
   }
 
-  /* 시작 */
   init();
 </script>
 
