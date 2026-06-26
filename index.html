@@ -1,0 +1,894 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>임박사 | 도시와 기술을 읽는 연구자</title>
+  <meta name="description" content="가상의 인물 임박사를 소개하는 개인 홈페이지">
+  <style>
+    :root {
+      --ink: #17201c;
+      --muted: #66706b;
+      --paper: #faf9f4;
+      --line: #d8d6cb;
+      --teal: #006b66;
+      --coral: #db5f4c;
+      --amber: #f0b743;
+      --leaf: #4f7d43;
+      --white: #ffffff;
+      --shadow: 0 18px 60px rgba(23, 32, 28, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, Pretendard, "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.58;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(250, 249, 244, 0.88);
+      border-bottom: 1px solid rgba(216, 214, 203, 0.8);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      width: min(1120px, calc(100% - 32px));
+      min-height: 64px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--teal);
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      box-shadow: 4px 4px 0 var(--amber);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.95rem;
+      color: #38413c;
+    }
+
+    .nav-links a {
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+
+    .nav-links a:hover {
+      background: rgba(0, 107, 102, 0.09);
+    }
+
+    .hero {
+      min-height: calc(100svh - 64px);
+      display: grid;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(250, 249, 244, 0.98) 0%, rgba(250, 249, 244, 0.86) 48%, rgba(250, 249, 244, 0.46) 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 980'%3E%3Crect width='1440' height='980' fill='%23e8efe9'/%3E%3Cpath d='M0 760 C260 670 430 810 690 710 C930 620 1080 520 1440 610 L1440 980 L0 980 Z' fill='%23f0b743' opacity='.78'/%3E%3Cpath d='M1050 80 L1370 160 L1370 740 L1048 670 Z' fill='%23006b66' opacity='.90'/%3E%3Cpath d='M840 190 L1100 112 L1100 760 L840 812 Z' fill='%23ffffff' opacity='.68'/%3E%3Cpath d='M1080 146 L1322 202 L1322 690 L1080 640 Z' fill='%2317201c' opacity='.10'/%3E%3Cg fill='%23faf9f4' opacity='.72'%3E%3Crect x='1100' y='226' width='42' height='58'/%3E%3Crect x='1170' y='242' width='42' height='58'/%3E%3Crect x='1240' y='258' width='42' height='58'/%3E%3Crect x='1100' y='350' width='42' height='58'/%3E%3Crect x='1170' y='366' width='42' height='58'/%3E%3Crect x='1240' y='382' width='42' height='58'/%3E%3Crect x='1100' y='474' width='42' height='58'/%3E%3Crect x='1170' y='490' width='42' height='58'/%3E%3Crect x='1240' y='506' width='42' height='58'/%3E%3C/g%3E%3Cpath d='M760 610 C800 500 910 460 1010 520 C1130 592 1108 770 980 830 C850 890 710 770 760 610 Z' fill='%23db5f4c' opacity='.90'/%3E%3Ccircle cx='548' cy='530' r='196' fill='%23ffffff' opacity='.62'/%3E%3Cpath d='M420 336 L690 270 L750 708 L480 760 Z' fill='%23ffffff' opacity='.78'/%3E%3Cpath d='M456 390 L690 334 M468 462 L706 410 M480 538 L720 486 M492 610 L734 560' stroke='%2317201c' stroke-width='12' opacity='.18'/%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-inner {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 54px 0 46px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(310px, 0.78fr);
+      align-items: center;
+      gap: 44px;
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--teal);
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 0;
+      font-size: clamp(3.3rem, 8vw, 7.6rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 660px;
+      margin: 26px 0 0;
+      font-size: clamp(1.08rem, 2vw, 1.34rem);
+      color: #37413d;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 32px;
+    }
+
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 18px;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: var(--ink);
+      color: var(--white);
+      font-weight: 800;
+      box-shadow: 4px 4px 0 var(--amber);
+    }
+
+    .button.secondary {
+      background: var(--white);
+      color: var(--ink);
+      box-shadow: 4px 4px 0 var(--coral);
+    }
+
+    .portrait-wrap {
+      min-height: 430px;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .portrait {
+      width: min(100%, 410px);
+      aspect-ratio: 4 / 5;
+      filter: drop-shadow(var(--shadow));
+    }
+
+    .quick-facts {
+      position: absolute;
+      right: 0;
+      bottom: 4px;
+      width: min(260px, 72%);
+      padding: 16px;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 6px 6px 0 var(--teal);
+    }
+
+    .quick-facts strong {
+      display: block;
+      font-size: 0.9rem;
+    }
+
+    .quick-facts span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    section {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-inner {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 74px 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.65fr 1fr;
+      gap: 36px;
+      align-items: start;
+      margin-bottom: 34px;
+    }
+
+    .kicker {
+      margin: 0;
+      color: var(--coral);
+      font-weight: 800;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 700px;
+      margin: 0;
+      color: #46504b;
+      font-size: 1.08rem;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .quote-panel {
+      padding: 30px;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: 7px 7px 0 var(--amber);
+    }
+
+    .quote-panel blockquote {
+      margin: 0;
+      font-size: clamp(1.45rem, 3vw, 2.2rem);
+      line-height: 1.22;
+      font-weight: 850;
+    }
+
+    .quote-panel cite {
+      display: block;
+      margin-top: 18px;
+      color: var(--muted);
+      font-style: normal;
+    }
+
+    .bio-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .bio-list li {
+      display: grid;
+      grid-template-columns: 104px 1fr;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .bio-list b {
+      color: var(--teal);
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 22px;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .card:nth-child(1) {
+      box-shadow: 6px 6px 0 var(--teal);
+    }
+
+    .card:nth-child(2) {
+      box-shadow: 6px 6px 0 var(--coral);
+    }
+
+    .card:nth-child(3) {
+      box-shadow: 6px 6px 0 var(--amber);
+    }
+
+    .card-number {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 28px;
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+      font-weight: 850;
+      background: #e8efe9;
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 1.32rem;
+      line-height: 1.18;
+    }
+
+    .card p {
+      margin: 0;
+      color: #53605a;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 0;
+      border-top: 2px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 28px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .timeline-item:last-child {
+      border-bottom: 0;
+    }
+
+    .year {
+      color: var(--coral);
+      font-size: 1.35rem;
+      font-weight: 850;
+    }
+
+    .timeline-item h3 {
+      margin: 0 0 6px;
+      font-size: 1.25rem;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      color: #53605a;
+    }
+
+    .books {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .book {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 22px;
+      align-items: stretch;
+      padding: 18px;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .book-cover {
+      min-height: 176px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 14px;
+      border: 2px solid var(--ink);
+      border-radius: 4px;
+      background: var(--teal);
+      color: var(--white);
+      font-weight: 850;
+      line-height: 1.18;
+    }
+
+    .book:nth-child(2) .book-cover {
+      background: var(--coral);
+    }
+
+    .book small {
+      color: rgba(255, 255, 255, 0.78);
+      font-weight: 700;
+    }
+
+    .book h3 {
+      margin: 0 0 10px;
+      font-size: 1.35rem;
+    }
+
+    .book p {
+      margin: 0;
+      color: #53605a;
+    }
+
+    .contact-band {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .contact-band .section-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(320px, 1fr);
+      gap: 36px;
+      align-items: start;
+      padding: 54px 0;
+    }
+
+    .contact-band h2 {
+      max-width: 720px;
+    }
+
+    .contact-band p {
+      max-width: 620px;
+      margin: 14px 0 0;
+      color: rgba(255, 255, 255, 0.74);
+    }
+
+    .contact-band .button {
+      background: var(--amber);
+      color: var(--ink);
+      box-shadow: 4px 4px 0 var(--coral);
+    }
+
+    .partner-form {
+      display: grid;
+      gap: 14px;
+      padding: 20px;
+      border: 2px solid var(--white);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .form-field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .form-field label,
+    .consent-field {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.92rem;
+      font-weight: 800;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      padding: 12px 13px;
+      color: var(--ink);
+      background: var(--white);
+      font: inherit;
+    }
+
+    .form-field textarea {
+      min-height: 132px;
+      resize: vertical;
+    }
+
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      border-color: var(--amber);
+      outline: 3px solid rgba(240, 183, 67, 0.28);
+    }
+
+    .consent-field {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      line-height: 1.4;
+    }
+
+    .consent-field input {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      accent-color: var(--amber);
+      flex: 0 0 auto;
+    }
+
+    footer {
+      padding: 24px 0;
+      background: #101713;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.92rem;
+    }
+
+    .footer-inner {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 860px) {
+      .nav {
+        min-height: auto;
+        padding: 12px 0;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        justify-content: flex-end;
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-inner,
+      .profile-grid,
+      .section-head,
+      .contact-band .section-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-inner {
+        padding-top: 48px;
+        gap: 20px;
+      }
+
+      .portrait-wrap {
+        min-height: 360px;
+      }
+
+      .quick-facts {
+        right: 12px;
+      }
+
+      .research-grid,
+      .books {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nav {
+        width: min(100% - 24px, 1120px);
+        display: grid;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+        gap: 2px;
+        font-size: 0.9rem;
+      }
+
+      .hero-inner,
+      .section-inner,
+      .footer-inner {
+        width: min(100% - 24px, 1120px);
+      }
+
+      .hero-copy {
+        font-size: 1.02rem;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .portrait-wrap {
+        min-height: 320px;
+      }
+
+      .quick-facts {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        margin-top: -18px;
+      }
+
+      .section-inner {
+        padding: 54px 0;
+      }
+
+      .bio-list li,
+      .timeline-item,
+      .book {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .book-cover {
+        min-height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="주요 메뉴">
+      <a class="brand" href="#top" aria-label="임박사 홈">
+        <span class="brand-mark" aria-hidden="true">임</span>
+        <span>임박사 연구실</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">소개</a>
+        <a href="#research">연구</a>
+        <a href="#timeline">이력</a>
+        <a href="#books">저서</a>
+        <a href="#contact">연락</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div>
+          <p class="eyebrow">가상 인물 소개 홈페이지</p>
+          <h1 id="hero-title">임박사</h1>
+          <p class="hero-copy">
+            도시의 리듬, 공공 데이터, 사람의 생활 감각을 함께 읽는 연구자. 임박사는 더 나은 일상을 만드는 기술의 조건을 탐구합니다.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#research">연구 보기</a>
+            <a class="button secondary" href="#contact">초청 문의</a>
+          </div>
+        </div>
+        <div class="portrait-wrap" aria-label="임박사의 일러스트 초상">
+          <svg class="portrait" viewBox="0 0 420 520" role="img" aria-labelledby="portrait-title portrait-desc">
+            <title id="portrait-title">임박사 초상</title>
+            <desc id="portrait-desc">안경을 쓴 연구자가 노트와 펜을 들고 서 있는 일러스트</desc>
+            <defs>
+              <linearGradient id="coat" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stop-color="#ffffff"/>
+                <stop offset="1" stop-color="#dce8e1"/>
+              </linearGradient>
+            </defs>
+            <path d="M78 176c-32 54-45 138-21 214 29 92 111 124 187 112 89-14 141-91 138-184-3-89-58-169-137-194-67-21-131-8-167 52z" fill="#f0b743"/>
+            <path d="M84 206c-11 99 14 237 122 260 92 19 153-55 158-153 5-101-44-184-128-202-77-16-141 15-152 95z" fill="#ffffff" stroke="#17201c" stroke-width="5"/>
+            <path d="M116 378c19-61 57-96 103-96 53 0 89 42 103 96l17 73c-34 34-78 53-128 53-48 0-91-17-123-49l28-77z" fill="url(#coat)" stroke="#17201c" stroke-width="5"/>
+            <path d="M164 293c10 32 81 31 93 0v67c-15 22-73 21-93-1v-66z" fill="#f3c4a3" stroke="#17201c" stroke-width="5"/>
+            <path d="M132 183c5-55 42-92 91-93 62-1 93 42 98 100 6 73-35 128-94 132-62 4-101-54-95-139z" fill="#f3c4a3" stroke="#17201c" stroke-width="5"/>
+            <path d="M130 190c-12-40 1-88 35-117 27-24 76-33 113-14 42 22 60 65 49 121-24-8-62-26-86-58-23 35-70 56-111 68z" fill="#17201c"/>
+            <path d="M139 214c-17-2-28 10-25 29 3 18 18 28 33 23" fill="#f3c4a3" stroke="#17201c" stroke-width="5"/>
+            <path d="M314 214c17-2 28 10 25 29-3 18-18 28-33 23" fill="#f3c4a3" stroke="#17201c" stroke-width="5"/>
+            <circle cx="182" cy="222" r="24" fill="none" stroke="#17201c" stroke-width="5"/>
+            <circle cx="268" cy="222" r="24" fill="none" stroke="#17201c" stroke-width="5"/>
+            <path d="M206 222h39" stroke="#17201c" stroke-width="5"/>
+            <path d="M218 226l-9 38 31-1" fill="none" stroke="#17201c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M189 286c23 17 51 16 72 0" fill="none" stroke="#17201c" stroke-width="5" stroke-linecap="round"/>
+            <path d="M139 368l-52 72c-12 17-5 39 14 48 18 8 38 1 49-16l42-65" fill="#ffffff" stroke="#17201c" stroke-width="5"/>
+            <path d="M310 367l44 68c10 16 5 37-11 47-17 11-40 6-51-11l-37-58" fill="#ffffff" stroke="#17201c" stroke-width="5"/>
+            <path d="M183 414h93v58h-93z" fill="#006b66" stroke="#17201c" stroke-width="5"/>
+            <path d="M199 433h61M199 450h42" stroke="#faf9f4" stroke-width="5" stroke-linecap="round"/>
+            <path d="M330 332l56-28 9 18-56 28z" fill="#db5f4c" stroke="#17201c" stroke-width="4"/>
+          </svg>
+          <div class="quick-facts">
+            <strong>전공</strong>
+            <span>도시 데이터 해석, 기술 윤리, 생활 정책 설계</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-inner">
+        <div class="section-head">
+          <div>
+            <p class="kicker">About</p>
+            <h2>숫자와 사람 사이를 번역합니다.</h2>
+          </div>
+          <p class="lead">
+            임박사는 가상의 독립 연구자입니다. 혼잡한 거리, 느린 행정, 낯선 알고리즘처럼 일상에서 만나는 문제를 조사하고 시민이 이해할 수 있는 언어로 풀어냅니다.
+          </p>
+        </div>
+        <div class="profile-grid">
+          <div class="quote-panel">
+            <blockquote>“도시는 거대한 장치가 아니라, 매일 아침 다시 합의되는 약속입니다.”</blockquote>
+            <cite>임박사, 공개 강연 &lt;느린 도시의 빠른 데이터&gt; 중</cite>
+          </div>
+          <ul class="bio-list">
+            <li><b>이름</b><span>임도현, 통칭 임박사</span></li>
+            <li><b>소속</b><span>가상 싱크탱크 도시감각연구소 소장</span></li>
+            <li><b>관심사</b><span>보행자 경험, 공공 AI, 동네 서점 지도, 느린 통계</span></li>
+            <li><b>취미</b><span>새벽 시장 기록, 오래된 버스 노선 수집, 만년필 정비</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="section-inner">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Research</p>
+            <h2>임박사의 세 가지 질문</h2>
+          </div>
+          <p class="lead">
+            연구는 화려한 미래 예측보다 당장 바꿀 수 있는 선택지를 찾는 데 집중합니다. 현장 관찰, 인터뷰, 공개 데이터를 함께 사용합니다.
+          </p>
+        </div>
+        <div class="research-grid">
+          <article class="card">
+            <div>
+              <span class="card-number">1</span>
+              <h3>기술은 누구의 시간을 절약하는가</h3>
+              <p>자동화가 시민, 공무원, 돌봄 노동자의 시간을 어떻게 다르게 바꾸는지 추적합니다.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div>
+              <span class="card-number">2</span>
+              <h3>좋은 도시는 어떻게 느껴지는가</h3>
+              <p>보도 폭, 소음, 그늘, 대기 시간을 생활 감각의 지표로 엮어 도시 경험을 설명합니다.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div>
+              <span class="card-number">3</span>
+              <h3>공공 데이터는 어떻게 신뢰받는가</h3>
+              <p>숫자의 출처와 한계를 함께 공개하는 데이터 커뮤니케이션 원칙을 제안합니다.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline">
+      <div class="section-inner">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Timeline</p>
+            <h2>가상의 이력</h2>
+          </div>
+          <p class="lead">실존 인물이 아닌 창작된 프로필입니다. 홈페이지 샘플, 포트폴리오 데모, 캐릭터 소개 페이지로 사용할 수 있습니다.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="year">2016</div>
+            <div>
+              <h3>도시감각연구소 설립</h3>
+              <p>시민 인터뷰와 현장 관찰을 결합한 작은 연구실을 열었습니다.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="year">2019</div>
+            <div>
+              <h3>공공 알고리즘 점검표 발표</h3>
+              <p>설명 가능성, 이의제기 절차, 데이터 편향을 쉽게 확인하는 18개 문항을 제안했습니다.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="year">2023</div>
+            <div>
+              <h3>동네 생활권 아카이브 진행</h3>
+              <p>골목의 그늘, 의자, 간판, 대기 줄을 기록해 보행자 중심의 도시 지도를 만들었습니다.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="books">
+      <div class="section-inner">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Books</p>
+            <h2>상상 속 저서</h2>
+          </div>
+          <p class="lead">임박사의 관점을 보여주는 허구의 책과 보고서입니다.</p>
+        </div>
+        <div class="books">
+          <article class="book">
+            <div class="book-cover">
+              <span>느린 도시의<br>빠른 데이터</span>
+              <small>임박사</small>
+            </div>
+            <div>
+              <h3>느린 도시의 빠른 데이터</h3>
+              <p>도시 데이터가 속도를 높일수록 왜 더 섬세한 질문이 필요한지 다룬 에세이형 연구서입니다.</p>
+            </div>
+          </article>
+          <article class="book">
+            <div class="book-cover">
+              <span>알고리즘 앞의<br>생활자</span>
+              <small>FIELD NOTE 04</small>
+            </div>
+            <div>
+              <h3>알고리즘 앞의 생활자</h3>
+              <p>복지, 교통, 교육 현장에서 자동화가 만드는 작은 불편과 해결의 단서를 모았습니다.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-band">
+      <div class="section-inner">
+        <div>
+          <h2>제휴 문의</h2>
+          <p>강연, 인터뷰, 콘텐츠 협업, 브랜드 제휴 등 함께 논의할 내용을 남겨 주세요. 확인 후 입력한 이메일로 답변드리겠습니다.</p>
+        </div>
+        <form class="partner-form" action="https://formspree.io/f/mlgybgdw" method="POST">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="partner-name">이름</label>
+              <input id="partner-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="form-field">
+              <label for="partner-email">이메일</label>
+              <input id="partner-email" name="email" type="email" autocomplete="email" required>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="partner-type">문의 유형</label>
+            <select id="partner-type" name="inquiry_type" required>
+              <option value="">선택해 주세요</option>
+              <option value="brand-partnership">브랜드 제휴</option>
+              <option value="content-collaboration">콘텐츠 협업</option>
+              <option value="lecture-interview">강연/인터뷰</option>
+              <option value="other">기타</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="partner-message">문의 내용</label>
+            <textarea id="partner-message" name="message" placeholder="제안 내용, 일정, 예산 범위 등을 간단히 적어 주세요." required></textarea>
+          </div>
+          <label class="consent-field" for="partner-consent">
+            <input id="partner-consent" name="privacy_consent" type="checkbox" value="agreed" required>
+            <span>문의 답변을 위해 입력한 정보를 수집하고 확인하는 데 동의합니다.</span>
+          </label>
+          <button class="button" type="submit">문의 보내기</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© 2026 임박사 연구실. Fictional profile.</span>
+      <span>이 페이지의 인물과 이력은 모두 허구입니다.</span>
+    </div>
+  </footer>
+</body>
+</html>
