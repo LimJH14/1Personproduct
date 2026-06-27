@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TH 발음 완전 정복: θ와 ð를 정확하게 내는 방법 — CODEPRON</title>
+  <meta name="description" content="한국어에 없는 TH 발음(θ, ð)을 정확하게 내는 방법. '씽크'와 '디스' 발음 실수를 없애는 치간음 훈련법을 단계별로 안내합니다.">
+  <meta name="google-adsense-account" content="ca-pub-8830668259823812">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8830668259823812" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#0d1117; --bg-card:#161b22; --bg-card2:#1c2333; --border:#30363d;
+      --accent:#00d4aa; --accent-dim:#00d4aa22; --text:#e6edf3;
+      --text-sub:#8b949e; --text-muted:#484f58; --red:#f85149; --green:#3fb950; --yellow:#d29922;
+      --radius:12px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.75; min-height: 100vh; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.5px; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { color: var(--text-sub); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .btn-nav { background: var(--accent); color: #0d1117 !important; font-weight: 600; font-size: 13px; padding: 8px 16px; border-radius: 8px; }
+
+    .article-hero { padding: 52px 0 36px; border-bottom: 1px solid var(--border); margin-bottom: 48px; }
+    .article-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .article-tag { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; background: var(--accent-dim); color: var(--accent); border: 1px solid #00d4aa33; }
+    .article-date { font-size: 12px; color: var(--text-muted); }
+    .article-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(24px, 4vw, 38px); font-weight: 700; letter-spacing: -0.8px; line-height: 1.2; margin-bottom: 16px; }
+    .article-intro { font-size: 17px; color: var(--text-sub); line-height: 1.75; max-width: 640px; }
+
+    .article-body h2 { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: var(--text); margin: 48px 0 16px; letter-spacing: -0.3px; padding-top: 8px; border-top: 1px solid var(--border); }
+    .article-body h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 28px 0 12px; }
+    .article-body p { font-size: 15px; color: var(--text-sub); margin-bottom: 16px; line-height: 1.8; }
+    .article-body strong { color: var(--text); }
+
+    .th-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 24px 0; }
+    .th-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
+    .th-card.voiced { border-left: 3px solid var(--accent); }
+    .th-card.voiceless { border-left: 3px solid var(--yellow); }
+    .th-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+    .th-card.voiced .th-label { color: var(--accent); }
+    .th-card.voiceless .th-label { color: var(--yellow); }
+    .th-ipa { font-family: 'Space Grotesk', sans-serif; font-size: 36px; font-weight: 700; margin-bottom: 10px; }
+    .th-card.voiced .th-ipa { color: var(--accent); }
+    .th-card.voiceless .th-ipa { color: var(--yellow); }
+    .th-card h4 { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .th-card p { font-size: 13px; color: var(--text-sub); margin: 0; line-height: 1.6; }
+    .th-examples { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .th-ex { background: var(--bg-card2); border: 1px solid var(--border); font-size: 12px; color: var(--text-sub); padding: 3px 10px; border-radius: 6px; }
+
+    .highlight-box { background: var(--accent-dim); border: 1px solid #00d4aa33; border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 16px 20px; margin: 24px 0; }
+    .highlight-box p { font-size: 14px; color: var(--text); margin: 0; line-height: 1.7; }
+
+    .mistake-box { background: #f8514911; border: 1px solid #f8514933; border-left: 3px solid var(--red); border-radius: var(--radius); padding: 16px 20px; margin: 24px 0; }
+    .mistake-label { font-size: 11px; font-weight: 600; color: var(--red); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+    .mistake-box p { font-size: 14px; color: #e06c75; margin: 0; line-height: 1.7; }
+
+    .pairs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin: 16px 0 24px; }
+    .pair-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; display: flex; align-items: center; gap: 10px; }
+    .pw { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 500; }
+    .pw.a { color: var(--accent); }
+    .pw.b { color: var(--text-sub); }
+    .psep { font-size: 12px; color: var(--text-muted); }
+
+    .step-list { display: flex; flex-direction: column; gap: 12px; margin: 24px 0; }
+    .step-item { display: flex; gap: 16px; align-items: flex-start; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
+    .step-num { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; color: var(--accent); flex-shrink: 0; min-width: 28px; }
+    .step-content h4 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .step-content p { font-size: 13px; color: var(--text-sub); margin: 0; line-height: 1.6; }
+
+    .practice-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #0d1117; font-weight: 600; font-size: 14px; padding: 12px 24px; border-radius: 10px; text-decoration: none; transition: opacity 0.2s; margin: 24px 0 0; }
+    .practice-cta:hover { opacity: 0.88; }
+
+    .related { margin: 56px 0 0; padding-top: 32px; border-top: 1px solid var(--border); }
+    .related-title { font-size: 13px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+    .related-links { display: flex; flex-direction: column; gap: 8px; }
+    .related-link { display: block; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; text-decoration: none; color: var(--text); font-size: 14px; font-weight: 500; transition: border-color 0.2s; }
+    .related-link:hover { border-color: var(--accent); color: var(--accent); }
+
+    footer { border-top: 1px solid var(--border); padding: 32px 0; margin-top: 64px; text-align: center; }
+    footer p { font-size: 13px; color: var(--text-muted); }
+    footer a { color: var(--text-sub); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 600px) { .nav-links a:not(.btn-nav) { display: none; } .th-compare { grid-template-columns: 1fr; } }
+    *:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <nav>
+    <a href="/" class="nav-logo">CODE<span>PRON</span></a>
+    <div class="nav-links">
+      <a href="/guide.html">발음 가이드</a>
+      <a href="/blog.html">블로그</a>
+      <a href="/about.html">소개</a>
+      <a href="/" class="btn-nav">발음 연습</a>
+    </div>
+  </nav>
+</div>
+
+<div class="container">
+  <div class="article-hero">
+    <div class="article-meta">
+      <span class="article-tag">자음 교정</span>
+      <span class="article-date">2026년 6월 15일</span>
+    </div>
+    <h1 class="article-title">TH 발음, 어렵지 않습니다: 혀 하나로 해결하는 θ와 ð 완전 정복</h1>
+    <p class="article-intro">영어 TH는 한국어에 존재하지 않는 소리입니다. 그래서 한국인은 자연스럽게 "ㅅ"이나 "ㄷ"으로 대체하게 됩니다. 하지만 방법은 단순합니다. 혀를 치아 사이에 살짝 끼우는 것만으로 두 가지 TH 발음 모두 정확하게 낼 수 있습니다.</p>
+  </div>
+
+  <!-- AdSense 상단 -->
+  <ins class="adsbygoogle"
+       style="display:block;margin:0 0 40px;"
+       data-ad-client="ca-pub-8830668259823812"
+       data-ad-slot=""
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  <div class="article-body">
+
+    <h2>TH 발음이란? 두 가지 소리가 있습니다</h2>
+
+    <p>영어에서 "TH"라는 철자는 두 가지 다른 소리를 나타냅니다. 언어학적으로 두 소리 모두 <strong>치간 마찰음(interdental fricative)</strong>이라고 부르며, 혀끝이 윗니와 아랫니 사이에 위치하는 것이 공통점입니다.</p>
+
+    <div class="th-compare">
+      <div class="th-card voiceless">
+        <div class="th-label">무성음 (Voiceless)</div>
+        <div class="th-ipa">θ</div>
+        <h4>성대가 울리지 않습니다</h4>
+        <p>혀를 치아 사이에 끼운 상태에서 바람만 내보냅니다. 목에 손을 대보면 진동이 느껴지지 않아야 합니다. "쓰"와 비슷하지만 혀가 치아 사이에 있어야 합니다.</p>
+        <div class="th-examples">
+          <span class="th-ex">think</span>
+          <span class="th-ex">three</span>
+          <span class="th-ex">thanks</span>
+          <span class="th-ex">through</span>
+          <span class="th-ex">both</span>
+          <span class="th-ex">bath</span>
+        </div>
+      </div>
+      <div class="th-card voiced">
+        <div class="th-label">유성음 (Voiced)</div>
+        <div class="th-ipa">ð</div>
+        <h4>성대가 울립니다</h4>
+        <p>같은 위치에서 이번에는 성대를 함께 울립니다. 목에 손을 대면 진동이 느껴져야 합니다. "즈"와 비슷하지만 혀가 치아 사이에 있어야 합니다.</p>
+        <div class="th-examples">
+          <span class="th-ex">the</span>
+          <span class="th-ex">this</span>
+          <span class="th-ex">that</span>
+          <span class="th-ex">there</span>
+          <span class="th-ex">them</span>
+          <span class="th-ex">smooth</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <p><strong>핵심 규칙:</strong> 혀끝을 윗니와 아랫니 사이에 살짝 내밀고 바람을 내보내면 θ, 성대도 함께 울리면 ð입니다. 혀의 위치는 완전히 동일합니다.</p>
+    </div>
+
+    <h2>왜 한국인은 TH를 틀리게 발음할까?</h2>
+
+    <p>한국어 음소 체계에는 치간 마찰음이 존재하지 않습니다. 뇌는 새로운 소리를 처음 접할 때 이미 알고 있는 가장 유사한 소리로 매핑하려는 경향이 있습니다.</p>
+
+    <p>그 결과 한국인은 다음과 같은 대체 발음을 자동으로 사용하게 됩니다:</p>
+
+    <div class="mistake-box">
+      <div class="mistake-label">흔한 실수 패턴</div>
+      <p>무성 θ → "ㅅ(s)" 또는 "ㅌ(t)"로 대체: think → "씽크" / "팅크"<br>
+      유성 ð → "ㄷ(d)" 또는 "ㅈ(j)"로 대체: this → "디스" / "지스"<br>
+      이 대체 발음은 원어민에게 전혀 다른 단어로 들릴 수 있습니다.</p>
+    </div>
+
+    <p>예를 들어 "think(생각하다)"를 "sink(가라앉다)"처럼, "three(셋)"를 "tree(나무)"처럼, "that(저것)"을 "dat"처럼 발음하는 실수가 생깁니다. 이러한 혼동이 실제 의사소통에서 오해를 만들 수 있습니다.</p>
+
+    <h2>TH 발음을 내는 정확한 방법</h2>
+
+    <h3>1단계: 혀 위치 잡기</h3>
+
+    <p>입을 살짝 벌리고 혀끝을 앞으로 내밉니다. 혀끝이 윗니의 뒷면에 살짝 닿게 하거나, 치아 사이로 혀끝이 약간 보일 정도로 내밉니다. 과도하게 많이 내밀 필요는 없습니다. 혀끝이 치아 사이에 있으면 됩니다.</p>
+
+    <p>처음에는 거울을 보면서 혀의 위치를 눈으로 확인하세요. 혀끝이 치아 밖으로 살짝 나오는 것이 보여야 합니다.</p>
+
+    <h3>2단계: 무성음 θ 연습 (바람만 내보내기)</h3>
+
+    <p>혀를 치아 사이에 끼운 상태에서 천천히 바람을 내보내세요. 이때 성대는 울리지 않습니다. 마치 "쓰~"라고 하는 것처럼 공기가 혀와 치아 사이를 통과하는 마찰음이 나야 합니다.</p>
+
+    <p>손등을 입 앞에 대보면 바람이 느껴져야 합니다. 이 단계에서 목에 손을 대면 아무 진동도 느껴지지 않아야 합니다.</p>
+
+    <h3>3단계: 유성음 ð 연습 (진동 추가하기)</h3>
+
+    <p>같은 혀 위치에서 이번에는 성대를 울립니다. "음~"하고 낮게 허밍하는 느낌으로 성대를 진동시키면서 혀와 치아 사이로 바람을 내보내세요.</p>
+
+    <p>목에 손을 대면 진동이 느껴져야 합니다. "dz"처럼 느껴질 수도 있지만, 핵심은 혀가 치아 사이에 있다는 것입니다.</p>
+
+    <h2>TH가 포함된 최소 대립어 연습</h2>
+
+    <p>TH 발음을 유사한 다른 발음과 구별하는 최소 대립어를 연습합니다.</p>
+
+    <p><strong>θ vs s (무성음 비교):</strong></p>
+    <div class="pairs-grid">
+      <div class="pair-card"><span class="pw a">think</span><span class="psep">vs</span><span class="pw b">sink</span></div>
+      <div class="pair-card"><span class="pw a">three</span><span class="psep">vs</span><span class="pw b">tree</span></div>
+      <div class="pair-card"><span class="pw a">thin</span><span class="psep">vs</span><span class="pw b">sin</span></div>
+      <div class="pair-card"><span class="pw a">thought</span><span class="psep">vs</span><span class="pw b">sort</span></div>
+      <div class="pair-card"><span class="pw a">thumb</span><span class="psep">vs</span><span class="pw b">sum</span></div>
+      <div class="pair-card"><span class="pw a">thanks</span><span class="psep">vs</span><span class="pw b">tanks</span></div>
+    </div>
+
+    <p><strong>ð vs d (유성음 비교):</strong></p>
+    <div class="pairs-grid">
+      <div class="pair-card"><span class="pw a">this</span><span class="psep">vs</span><span class="pw b">dis</span></div>
+      <div class="pair-card"><span class="pw a">that</span><span class="psep">vs</span><span class="pw b">dat</span></div>
+      <div class="pair-card"><span class="pw a">then</span><span class="psep">vs</span><span class="pw b">den</span></div>
+      <div class="pair-card"><span class="pw a">there</span><span class="psep">vs</span><span class="pw b">dare</span></div>
+      <div class="pair-card"><span class="pw a">they</span><span class="psep">vs</span><span class="pw b">day</span></div>
+      <div class="pair-card"><span class="pw a">though</span><span class="psep">vs</span><span class="pw b">dough</span></div>
+    </div>
+
+    <h2>실전 문장으로 TH 훈련하기</h2>
+
+    <p>다음 문장들은 TH 발음이 집중적으로 포함된 연습 문장입니다. 천천히, 각 TH 위치에서 혀를 의식하면서 발음하세요.</p>
+
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-num">입문</div>
+        <div class="step-content">
+          <h4>"Think about three things."</h4>
+          <p>모두 무성음 θ. 혀를 치아 사이에 끼우고 바람만 내보내는 연습에 집중합니다.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">중급</div>
+        <div class="step-content">
+          <h4>"The thirty-three thieves thought they thrilled the throne."</h4>
+          <p>유성음(the, they, the)과 무성음(thirty, three, thieves, thought, thrilled, throne)이 섞여 있습니다. 각 TH의 종류를 미리 확인하고 연습하세요.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">고급</div>
+        <div class="step-content">
+          <h4>"Whether the weather is fine or whether the weather is not."</h4>
+          <p>whether(ð)/weather(ð)처럼 일상 단어의 TH도 유성음입니다. 빠른 속도에서도 정확도를 유지하는 연습입니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>TH 발음 교정 시 주의할 점</h2>
+
+    <h3>혀를 너무 많이 내밀지 마세요</h3>
+    <p>혀끝이 치아 사이에 살짝 닿는 것이면 충분합니다. 혀를 지나치게 많이 내밀면 오히려 어색하고 실제 대화 속도에서 따라가기 어렵습니다. 자연스러운 TH는 혀가 치아 사이에 있다는 것이 거의 보이지 않을 정도로 섬세합니다.</p>
+
+    <h3>단어 끝의 TH는 혀를 끝까지 내밀어야 합니다</h3>
+    <p>"bath", "with", "both", "teeth" 같은 단어는 끝에 TH가 옵니다. 단어가 끝날 때 혀를 치아 사이에 위치시킨 상태에서 소리를 마무리해야 합니다. 혀를 일찍 당기면 TH 소리가 나지 않습니다.</p>
+
+    <h3>유성음과 무성음을 구별해서 연습하세요</h3>
+    <p>모든 TH를 같은 방법으로 발음하는 실수를 피하세요. "the", "this", "that", "there", "they", "though"는 유성음 ð이고, "think", "three", "through", "both", "thank"는 무성음 θ입니다. 영어 원문을 볼 때 TH를 만나면 어느 쪽인지 확인하는 습관을 들이세요.</p>
+
+    <div class="highlight-box">
+      <p><strong>빠른 체크 방법:</strong> 기능어(관사, 대명사, 접속사)에 오는 TH는 대부분 유성음 ð입니다. "the", "this", "that", "these", "those", "them", "their", "there", "then", "though", "although" 등이 대표적입니다. 내용어(명사, 동사, 형용사)에 오는 TH는 대부분 무성음 θ입니다.</p>
+    </div>
+
+    <a href="/" class="practice-cta">CODEPRON에서 TH 발음 연습하기 →</a>
+
+    <div class="related">
+      <div class="related-title">함께 읽으면 좋은 글</div>
+      <div class="related-links">
+        <a href="/blog-lr.html" class="related-link">L과 R 발음 완전 정복 →</a>
+        <a href="/blog-tips.html" class="related-link">AI 피드백으로 영어 발음 교정하는 3단계 방법 →</a>
+        <a href="/guide.html" class="related-link">전체 영어 발음 가이드 보기 →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>
+      © 2026 CODEPRON &nbsp;·&nbsp;
+      <a href="privacy.html">개인정보처리방침</a> &nbsp;·&nbsp;
+      <a href="terms.html">이용약관</a> &nbsp;·&nbsp;
+      <a href="contact.html">문의하기</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자주 묻는 질문(FAQ) — CODEPRON 영어 발음 교정</title>
+  <meta name="description" content="CODEPRON 영어 발음 교정 서비스에 대한 자주 묻는 질문. 작동 방식, 정확도, 브라우저 지원, 개인정보 처리 등을 안내합니다.">
+  <meta name="google-adsense-account" content="ca-pub-8830668259823812">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8830668259823812" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#0d1117; --bg-card:#161b22; --bg-card2:#1c2333; --border:#30363d;
+      --accent:#00d4aa; --accent-dim:#00d4aa22; --text:#e6edf3;
+      --text-sub:#8b949e; --text-muted:#484f58; --radius:12px; --radius-lg:20px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7; min-height: 100vh; }
+    .container { max-width: 820px; margin: 0 auto; padding: 0 20px; }
+
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.5px; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { color: var(--text-sub); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .btn-nav { background: var(--accent); color: #0d1117 !important; font-weight: 600; font-size: 13px; padding: 8px 16px; border-radius: 8px; }
+
+    .page-hero { padding: 56px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 52px; }
+    .page-label { font-size: 11px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
+    .page-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 5vw, 42px); font-weight: 700; letter-spacing: -1px; margin-bottom: 16px; line-height: 1.2; }
+    .page-title .hl { color: var(--accent); }
+    .page-sub { font-size: 16px; color: var(--text-sub); max-width: 520px; }
+
+    .faq-group { margin-bottom: 52px; }
+    .faq-group-title { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+
+    .faq-item { border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 8px; overflow: hidden; }
+    .faq-q { width: 100%; background: var(--bg-card); border: none; color: var(--text); font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; text-align: left; padding: 18px 20px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; transition: background 0.15s; }
+    .faq-q:hover { background: var(--bg-card2); }
+    .faq-icon { color: var(--accent); font-size: 18px; flex-shrink: 0; transition: transform 0.2s; line-height: 1; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a { display: none; padding: 0 20px 18px; background: var(--bg-card); }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a p { font-size: 14px; color: var(--text-sub); line-height: 1.75; margin-bottom: 10px; }
+    .faq-a p:last-child { margin-bottom: 0; }
+    .faq-a strong { color: var(--text); }
+    .faq-a a { color: var(--accent); text-decoration: none; }
+    .faq-a a:hover { text-decoration: underline; }
+
+    .cta-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 40px; text-align: center; margin: 0 0 64px; }
+    .cta-section h2 { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+    .cta-section p { font-size: 15px; color: var(--text-sub); margin-bottom: 24px; }
+    .btn-primary { background: var(--accent); color: #0d1117; font-weight: 600; font-size: 15px; padding: 13px 28px; border-radius: 10px; text-decoration: none; display: inline-block; transition: opacity 0.2s; }
+    .btn-primary:hover { opacity: 0.88; }
+
+    footer { border-top: 1px solid var(--border); padding: 32px 0; text-align: center; }
+    footer p { font-size: 13px; color: var(--text-muted); }
+    footer a { color: var(--text-sub); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 600px) { .nav-links a:not(.btn-nav) { display: none; } }
+    *:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <nav>
+    <a href="/" class="nav-logo">CODE<span>PRON</span></a>
+    <div class="nav-links">
+      <a href="/guide.html">발음 가이드</a>
+      <a href="/blog.html">블로그</a>
+      <a href="/about.html">소개</a>
+      <a href="/" class="btn-nav">발음 연습</a>
+    </div>
+  </nav>
+</div>
+
+<div class="container">
+  <div class="page-hero">
+    <p class="page-label">FAQ</p>
+    <h1 class="page-title">자주 묻는 질문<br><span class="hl">모두 답해드립니다</span></h1>
+    <p class="page-sub">CODEPRON 서비스 이용 중 궁금한 점을 모아 정리했습니다. 더 궁금한 게 있으시면 <a href="/contact.html" style="color:var(--accent)">문의하기</a>로 연락해 주세요.</p>
+  </div>
+
+  <!-- AdSense 상단 -->
+  <ins class="adsbygoogle"
+       style="display:block;margin:0 0 40px;"
+       data-ad-client="ca-pub-8830668259823812"
+       data-ad-slot=""
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  <!-- 서비스 기본 -->
+  <div class="faq-group">
+    <div class="faq-group-title">서비스 기본</div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        CODEPRON은 어떤 서비스인가요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>CODEPRON은 한국인을 위한 브라우저 기반 AI 영어 발음 교정 서비스입니다. 마이크로 영어 문장을 읽으면 AI가 실시간으로 발음을 분석해 100점 만점 점수와 단어별 피드백을 제공합니다.</p>
+        <p>앱 설치나 회원가입 없이 Chrome, Edge 브라우저에서 바로 사용할 수 있으며, 모든 핵심 기능이 <strong>완전 무료</strong>입니다.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        정말 무료인가요? 숨겨진 비용이 있나요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>네, 완전히 무료입니다. 현재 CODEPRON의 발음 인식, 점수 계산, 발음 가이드, 스크립트 연습, 연습 기록 등 모든 기능을 비용 없이 사용할 수 있습니다.</p>
+        <p>서비스 유지를 위해 Google AdSense 광고가 일부 페이지에 표시될 수 있으나, 광고 클릭은 선택 사항이며 발음 연습 기능과 무관합니다.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        회원가입이나 로그인이 필요한가요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>아니요. 회원가입 없이 바로 사용할 수 있습니다. 연습 기록은 사용자의 브라우저 로컬 저장소(LocalStorage)에 저장되며, 서버로 전송되지 않습니다.</p>
+        <p>단, 다른 기기에서는 기록이 공유되지 않습니다. 기기 간 기록 동기화 기능은 향후 업데이트에서 제공될 예정입니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 기술/작동 방식 -->
+  <div class="faq-group">
+    <div class="faq-group-title">기술 및 작동 방식</div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        어떤 기술로 발음을 인식하나요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>브라우저에 내장된 <strong>Web Speech API</strong>를 사용합니다. 마이크 입력을 Google의 음성 인식 서버로 전송해 텍스트로 변환한 뒤, CODEPRON이 목표 문장과 비교 분석합니다.</p>
+        <p>변환된 텍스트는 <strong>레벤슈타인 거리(Levenshtein Distance) 알고리즘</strong>으로 처리되어 단어 일치율(60%)과 문자 유사도(40%)를 가중 평균한 발음 점수를 계산합니다.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        발음 점수가 얼마나 정확한가요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>CODEPRON의 점수는 음성 인식 결과와 목표 문장의 <strong>텍스트 유사도</strong>를 기반으로 합니다. 실제 발음의 음향적 특성(음높이, 억양, 연음 등)을 직접 분석하지는 않습니다.</p>
+        <p>이는 브라우저 기반의 특성상 한계이며, 그럼에도 "AI가 내 발음을 어떻게 인식하는가"를 확인하는 데 매우 유용합니다. 원어민이 이해하는 수준의 발음을 목표로 연습하기에 적합합니다.</p>
+        <p>더 정밀한 음소(phoneme) 수준 분석은 향후 업데이트에서 제공할 예정입니다.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        어떤 브라우저에서 사용할 수 있나요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>음성 인식 기능은 <strong>Google Chrome(최신)</strong>과 <strong>Microsoft Edge(최신)</strong>에서 완전히 지원됩니다. 최상의 경험을 위해 Chrome 사용을 강력히 권장합니다.</p>
+        <p>Safari는 일부 버전에서 제한적으로 지원하며, Firefox는 Web Speech API를 지원하지 않아 음성 인식 기능을 사용할 수 없습니다. 단, 발음 가이드와 원어민 발음 듣기는 모든 브라우저에서 이용 가능합니다.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        모바일에서도 사용할 수 있나요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>반응형 디자인으로 모바일 화면에 최적화되어 있습니다. Android 기기의 Chrome 브라우저에서 음성 인식이 지원됩니다.</p>
+        <p>iOS(iPhone/iPad)의 경우 Safari에서 Web Speech API 지원이 제한적입니다. iOS에서 사용 시 일부 기능이 정상 작동하지 않을 수 있습니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 개인정보 -->
+  <div class="faq-group">
+    <div class="faq-group-title">개인정보 및 보안</div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        제 음성이 저장되거나 외부에 전송되나요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>음성 데이터 자체는 CODEPRON 서버에 저장되지 않습니다. 음성 인식을 위해 브라우저가 Google의 Web Speech API 서버와 통신하지만, 이는 브라우저가 직접 처리하며 CODEPRON은 음성 파일에 접근하지 않습니다.</p>
+        <p>인식된 텍스트 결과와 연습 기록은 사용자 기기의 로컬 저장소에만 보관됩니다. 자세한 내용은 <a href="/privacy.html">개인정보처리방침</a>을 확인해 주세요.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        마이크 권한을 허용해야 하나요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>음성 인식 기능 사용을 위해 브라우저 마이크 권한이 필요합니다. 마이크 버튼을 처음 클릭하면 브라우저가 권한을 요청합니다.</p>
+        <p>권한을 거부하면 발음 인식 기능을 사용할 수 없지만, 발음 가이드 읽기, 원어민 발음 듣기 등 다른 기능은 정상 이용 가능합니다. 마이크는 녹음 버튼을 누른 동안만 활성화됩니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 발음 연습 -->
+  <div class="faq-group">
+    <div class="faq-group-title">발음 연습 활용법</div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        점수가 낮게 나오는데 무엇이 문제인가요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>낮은 점수에는 여러 원인이 있을 수 있습니다:</p>
+        <p><strong>1. 발음 문제:</strong> 목표 발음과 실제 발음의 차이. 발음 가이드를 먼저 읽고 각 소리의 조음 방법을 이해한 뒤 연습하세요.</p>
+        <p><strong>2. 말하는 속도:</strong> 너무 빠르거나 불명확하면 인식률이 떨어집니다. 천천히, 또렷하게 발음하세요.</p>
+        <p><strong>3. 환경 소음:</strong> 조용한 환경에서 연습하세요. 배경 소음이 많으면 인식 정확도가 낮아집니다.</p>
+        <p><strong>4. 마이크 품질:</strong> 이어폰 마이크나 헤드셋이 내장 마이크보다 인식 정확도가 높습니다.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        '내 스크립트' 모드는 어떻게 사용하나요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>발음 연습 화면에서 '내 스크립트' 탭을 선택하고, 발표문, 영어 에세이, 면접 답변 등 연습하고 싶은 영어 텍스트를 붙여넣은 뒤 '연습 시작'을 클릭하세요.</p>
+        <p>텍스트는 문장 단위로 자동 분리되어 순서대로 발음 연습이 진행됩니다. 모든 문장이 끝나면 문장별 점수와 전체 평균 점수가 요약 화면에 표시됩니다.</p>
+        <p>영어 문장만 인식되며, 한국어나 다른 언어가 섞인 경우 해당 줄은 자동으로 제외됩니다.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        하루에 얼마나 연습해야 효과가 있나요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>언어학 연구에 따르면 발음 교정은 <strong>짧게 자주</strong> 연습하는 것이 효과적입니다. 하루 30분 몰아서 하는 것보다 하루 10분씩 3회 나눠서 연습하는 방식이 기억 고착에 유리합니다.</p>
+        <p>CODEPRON 권장 루틴: 아침 5분(기본 연습 3~4문장) + 저녁 10분(스크립트 연습 또는 가이드 복습). 2~3주 꾸준히 실천하면 명확한 변화를 느낄 수 있습니다.</p>
+        <p>특히 <strong>틀린 단어를 집중 반복</strong>하는 것이 가장 효과적입니다. 결과 화면의 빨간색 단어를 5회 이상 집중 연습하세요.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        어린이나 영어 초보자도 사용할 수 있나요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <p>네, 입문 레벨 문장은 영어를 처음 배우는 분도 도전할 수 있도록 간단하게 구성되어 있습니다. 영어 알파벳을 읽을 수 있다면 누구든 사용 가능합니다.</p>
+        <p>어린이의 경우 음성 인식 정확도가 성인에 비해 낮을 수 있으나(아동 음성 특성상), 발음을 소리 내어 연습하는 행위 자체가 학습에 도움이 됩니다. 부모와 함께 사용하는 것을 권장합니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- AdSense 중간 -->
+  <ins class="adsbygoogle"
+       style="display:block;margin:0 0 40px;"
+       data-ad-client="ca-pub-8830668259823812"
+       data-ad-slot=""
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  <div class="cta-section">
+    <h2>직접 발음 연습을 시작해보세요</h2>
+    <p>이론보다 실전. 지금 바로 마이크를 켜고 발음을 확인해보세요.</p>
+    <a href="/" class="btn-primary">무료로 발음 연습 시작하기</a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>
+      © 2026 CODEPRON &nbsp;·&nbsp;
+      <a href="privacy.html">개인정보처리방침</a> &nbsp;·&nbsp;
+      <a href="terms.html">이용약관</a> &nbsp;·&nbsp;
+      <a href="contact.html">문의하기</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  function toggle(btn) {
+    const item = btn.closest('.faq-item');
+    item.classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>

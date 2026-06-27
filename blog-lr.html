@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L과 R 발음 완전 정복: 한국인이 가장 많이 틀리는 발음 교정법 — CODEPRON</title>
+  <meta name="description" content="한국어 'ㄹ'과 영어 L·R의 차이를 완벽히 이해하고, 최소 대립어 연습으로 두 소리를 구별하는 방법을 단계별로 안내합니다.">
+  <meta name="google-adsense-account" content="ca-pub-8830668259823812">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8830668259823812" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#0d1117; --bg-card:#161b22; --bg-card2:#1c2333; --border:#30363d;
+      --accent:#00d4aa; --accent-dim:#00d4aa22; --text:#e6edf3;
+      --text-sub:#8b949e; --text-muted:#484f58; --red:#f85149; --green:#3fb950;
+      --radius:12px; --radius-lg:20px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.75; min-height: 100vh; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.5px; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { color: var(--text-sub); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .btn-nav { background: var(--accent); color: #0d1117 !important; font-weight: 600; font-size: 13px; padding: 8px 16px; border-radius: 8px; }
+
+    .article-hero { padding: 52px 0 36px; border-bottom: 1px solid var(--border); margin-bottom: 48px; }
+    .article-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .article-tag { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; background: var(--accent-dim); color: var(--accent); border: 1px solid #00d4aa33; }
+    .article-date { font-size: 12px; color: var(--text-muted); }
+    .article-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(24px, 4vw, 38px); font-weight: 700; letter-spacing: -0.8px; line-height: 1.2; margin-bottom: 16px; }
+    .article-intro { font-size: 17px; color: var(--text-sub); line-height: 1.75; max-width: 640px; }
+
+    .article-body h2 { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: var(--text); margin: 48px 0 16px; letter-spacing: -0.3px; padding-top: 8px; border-top: 1px solid var(--border); }
+    .article-body h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 28px 0 12px; }
+    .article-body p { font-size: 15px; color: var(--text-sub); margin-bottom: 16px; line-height: 1.8; }
+    .article-body p:last-child { margin-bottom: 0; }
+    .article-body strong { color: var(--text); }
+
+    .compare-box { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 24px 0; }
+    .compare-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+    .compare-card.l { border-left: 3px solid var(--accent); }
+    .compare-card.r { border-left: 3px solid var(--red); }
+    .compare-card .sound { font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700; color: var(--accent); margin-bottom: 10px; }
+    .compare-card.r .sound { color: var(--red); }
+    .compare-card h4 { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .compare-card p { font-size: 13px; color: var(--text-sub); margin: 0; line-height: 1.6; }
+
+    .highlight-box { background: var(--accent-dim); border: 1px solid #00d4aa33; border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 16px 20px; margin: 24px 0; }
+    .highlight-box p { font-size: 14px; color: var(--text); margin: 0; line-height: 1.7; }
+
+    .mistake-box { background: #f8514911; border: 1px solid #f8514933; border-left: 3px solid var(--red); border-radius: var(--radius); padding: 16px 20px; margin: 24px 0; }
+    .mistake-label { font-size: 11px; font-weight: 600; color: var(--red); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+    .mistake-box p { font-size: 14px; color: #e06c75; margin: 0; line-height: 1.7; }
+
+    .pairs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin: 16px 0 24px; }
+    .pair-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; display: flex; align-items: center; gap: 10px; }
+    .pw { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 500; }
+    .pw.a { color: var(--accent); }
+    .pw.b { color: var(--text-sub); }
+    .psep { font-size: 12px; color: var(--text-muted); }
+    .pmean { font-size: 11px; color: var(--text-muted); }
+
+    .step-list { display: flex; flex-direction: column; gap: 16px; margin: 24px 0; }
+    .step-item { display: flex; gap: 16px; align-items: flex-start; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
+    .step-num { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; color: var(--accent); flex-shrink: 0; min-width: 28px; }
+    .step-content h4 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .step-content p { font-size: 13px; color: var(--text-sub); margin: 0; line-height: 1.6; }
+
+    .practice-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #0d1117; font-weight: 600; font-size: 14px; padding: 12px 24px; border-radius: 10px; text-decoration: none; transition: opacity 0.2s; margin: 24px 0 0; }
+    .practice-cta:hover { opacity: 0.88; }
+
+    .related { margin: 56px 0 0; padding-top: 32px; border-top: 1px solid var(--border); }
+    .related-title { font-size: 13px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+    .related-links { display: flex; flex-direction: column; gap: 8px; }
+    .related-link { display: block; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; text-decoration: none; color: var(--text); font-size: 14px; font-weight: 500; transition: border-color 0.2s; }
+    .related-link:hover { border-color: var(--accent); color: var(--accent); }
+
+    footer { border-top: 1px solid var(--border); padding: 32px 0; margin-top: 64px; text-align: center; }
+    footer p { font-size: 13px; color: var(--text-muted); }
+    footer a { color: var(--text-sub); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 600px) { .nav-links a:not(.btn-nav) { display: none; } .compare-box { grid-template-columns: 1fr; } }
+    *:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <nav>
+    <a href="/" class="nav-logo">CODE<span>PRON</span></a>
+    <div class="nav-links">
+      <a href="/guide.html">발음 가이드</a>
+      <a href="/blog.html">블로그</a>
+      <a href="/about.html">소개</a>
+      <a href="/" class="btn-nav">발음 연습</a>
+    </div>
+  </nav>
+</div>
+
+<div class="container">
+  <div class="article-hero">
+    <div class="article-meta">
+      <span class="article-tag">자음 교정</span>
+      <span class="article-date">2026년 6월 20일</span>
+    </div>
+    <h1 class="article-title">L과 R 발음 완전 정복: 한국인이 가장 많이 틀리는 발음, 이렇게 고치세요</h1>
+    <p class="article-intro">한국어의 "ㄹ"은 영어의 L도, R도 아닙니다. 이 하나의 사실을 이해하는 것이 L/R 교정의 첫걸음입니다. 두 소리의 조음 위치 차이를 정확히 파악하고, 반복 연습으로 뇌가 두 소리를 완전히 구별하도록 훈련하는 방법을 설명합니다.</p>
+  </div>
+
+  <!-- AdSense 상단 -->
+  <ins class="adsbygoogle"
+       style="display:block;margin:0 0 40px;"
+       data-ad-client="ca-pub-8830668259823812"
+       data-ad-slot=""
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  <div class="article-body">
+
+    <h2>왜 한국인에게 L과 R이 어려울까?</h2>
+
+    <p>한국인 영어 학습자가 L과 R을 헷갈리는 가장 근본적인 이유는 <strong>한국어에 이 두 소리의 구별이 없기 때문</strong>입니다. 한국어의 "ㄹ"은 단일 음소이지만, 위치와 환경에 따라 다양하게 발음됩니다.</p>
+
+    <p>어두에서는 R에 가깝게, 어중·어말에서는 L에 가깝게 소리 나는 경향이 있지만, 사실 어느 쪽도 정확한 영어 발음이 아닙니다. 한국어 "ㄹ"은 혀끝이 윗잇몸을 가볍게 튕기는 <strong>탄음(flap/tap)</strong>에 가까운데, 이는 영어 L이나 R과는 전혀 다른 조음 방법입니다.</p>
+
+    <p>결과적으로 한국인은 light와 right, lake와 rake, liver와 river를 발음할 때 두 단어를 거의 동일하게 발음하게 되고, 원어민에게는 완전히 다른 의미로 혼동될 수 있습니다.</p>
+
+    <div class="mistake-box">
+      <div class="mistake-label">흔한 오해</div>
+      <p>"더 연습하면 언젠가는 구별될 것"이라는 생각은 반쪽짜리 해법입니다. 올바른 조음 위치를 의식적으로 훈련하지 않으면 아무리 반복해도 잘못된 발음이 굳어질 뿐입니다.</p>
+    </div>
+
+    <h2>L과 R의 조음 방법: 혀의 위치가 전부입니다</h2>
+
+    <div class="compare-box">
+      <div class="compare-card l">
+        <div class="sound">L</div>
+        <h4>혀끝이 닿아야 합니다</h4>
+        <p>혀끝(tongue tip)을 윗니 바로 뒤, 윗잇몸(alveolar ridge)에 가볍게 붙입니다. 이 상태에서 소리를 냅니다. 혀의 양쪽으로 공기가 빠져나갑니다. 발음 후 혀를 떼면서 끝냅니다.</p>
+      </div>
+      <div class="compare-card r">
+        <div class="sound">R</div>
+        <h4>혀가 어디에도 닿으면 안 됩니다</h4>
+        <p>혀를 입안 중간쯤에 띄워서 입천장 어디에도 닿지 않게 합니다. 동시에 혀를 약간 뒤로 당기거나 혀끝을 살짝 위로 말아 올립니다. 입술을 약간 앞으로 모아 발음하면 도움이 됩니다.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <p><strong>핵심 원칙:</strong> L은 혀가 잇몸에 "닿는" 소리, R은 혀가 어디에도 "닿지 않는" 소리입니다. 이 두 가지만 기억하면 됩니다.</p>
+    </div>
+
+    <h3>L 발음 연습법: 혀의 접촉을 의식하세요</h3>
+
+    <p>L을 정확하게 발음하려면 혀끝이 윗잇몸(치경)에 닿는 감각을 먼저 익혀야 합니다. 처음에는 천천히, 과장되게 혀를 잇몸에 붙이고 소리를 내보세요.</p>
+
+    <p>"라" 소리를 낼 때와 비교해 보세요. 한국어 "라"는 혀가 잇몸을 빠르게 튕기고 지나갑니다. 영어 L은 혀가 잇몸에 잠깐 붙어 있는 상태에서 소리가 납니다. 이 차이를 느껴보세요.</p>
+
+    <p>어말 L(dark L이라고도 합니다)은 특히 주의가 필요합니다. "ball", "fall", "all" 같은 단어 끝의 L은 혀가 잇몸에 닿은 상태에서 소리가 끝납니다. 한국인은 이 어말 L을 종종 생략하거나 모음으로 대체하는 경향이 있습니다.</p>
+
+    <h3>R 발음 연습법: 아무것도 닿지 않게 하세요</h3>
+
+    <p>R은 혀를 "뜨게" 만드는 것이 핵심입니다. 입안에서 혀를 약간 뒤로 당기면서 공중에 띄우세요. 혀끝이 입천장 어디에도 닿으면 안 됩니다.</p>
+
+    <p>처음에는 "아"를 길게 내면서 서서히 혀를 뒤로 당겨보세요. 소리가 "아"에서 "어"로, 다시 R 소리로 변해가는 것을 느낄 수 있습니다. 이 과정에서 혀가 어디에도 닿지 않는 상태를 유지하는 것이 R의 핵심입니다.</p>
+
+    <p>입술을 약간 둥글게 모으는 것도 도움이 됩니다. "오" 발음을 할 때처럼 입술을 살짝 앞으로 내밀면서 R을 발음해 보세요.</p>
+
+    <h2>최소 대립어(Minimal Pairs)로 귀와 입 동시에 훈련하기</h2>
+
+    <p>최소 대립어란 한 음소만 다르고 나머지는 동일한 단어 쌍을 말합니다. L/R의 경우 두 소리만 다르고 나머지 모든 소리가 같은 쌍입니다. 이를 집중적으로 연습하면 뇌가 두 소리의 차이를 학습합니다.</p>
+
+    <div class="pairs-grid">
+      <div class="pair-card"><span class="pw a">light</span><span class="psep">vs</span><span class="pw b">right</span></div>
+      <div class="pair-card"><span class="pw a">lake</span><span class="psep">vs</span><span class="pw b">rake</span></div>
+      <div class="pair-card"><span class="pw a">lead</span><span class="psep">vs</span><span class="pw b">read</span></div>
+      <div class="pair-card"><span class="pw a">lip</span><span class="psep">vs</span><span class="pw b">rip</span></div>
+      <div class="pair-card"><span class="pw a">liver</span><span class="psep">vs</span><span class="pw b">river</span></div>
+      <div class="pair-card"><span class="pw a">lane</span><span class="psep">vs</span><span class="pw b">rain</span></div>
+      <div class="pair-card"><span class="pw a">low</span><span class="psep">vs</span><span class="pw b">row</span></div>
+      <div class="pair-card"><span class="pw a">lock</span><span class="psep">vs</span><span class="pw b">rock</span></div>
+      <div class="pair-card"><span class="pw a">long</span><span class="psep">vs</span><span class="pw b">wrong</span></div>
+      <div class="pair-card"><span class="pw a">glass</span><span class="psep">vs</span><span class="pw b">grass</span></div>
+      <div class="pair-card"><span class="pw a">play</span><span class="psep">vs</span><span class="pw b">pray</span></div>
+      <div class="pair-card"><span class="pw a">clue</span><span class="psep">vs</span><span class="pw b">crew</span></div>
+    </div>
+
+    <p>연습 방법: 먼저 각 단어를 원어민 발음으로 들으며 차이를 귀로 확인하세요. 그런 다음 L 단어만 10번, R 단어만 10번, 마지막으로 두 단어를 번갈아 가며 발음합니다. 녹음해서 들어보면 더욱 효과적입니다.</p>
+
+    <h2>혼동하기 쉬운 실전 상황들</h2>
+
+    <h3>1. 단어 중간의 L과 R</h3>
+    <p>어두의 L/R보다 단어 중간에 오는 경우가 더 어렵습니다. "really", "already", "parallel" 같은 단어는 L과 R이 함께 등장하기 때문에 집중 연습이 필요합니다. 특히 "rural"(시골의)은 R-vowel-R-L 구조로 한국인이 가장 어려워하는 단어 중 하나입니다.</p>
+
+    <h3>2. 자음군(Consonant Clusters)에서의 L/R</h3>
+    <p>"play"와 "pray", "blue"와 "brew", "fly"와 "fry"처럼 다른 자음 뒤에 L이나 R이 오는 경우를 자음군이라고 합니다. 이 경우 앞 자음을 발음한 상태에서 즉시 L 또는 R 위치로 혀를 이동해야 합니다. 천천히 각 음을 분리해서 연습한 뒤 점차 속도를 높이세요.</p>
+
+    <h3>3. 문장에서의 L/R</h3>
+    <p>개별 단어 연습에서 성공했다면, 이제 문장에서 연습할 차례입니다. "The red light is right here"처럼 L과 R이 함께 등장하는 문장을 집중 연습하세요. 처음에는 매우 천천히, 각 단어의 첫 소리를 의식하면서 발음합니다.</p>
+
+    <h2>단계별 교정 플랜</h2>
+
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>조음 위치 감각 익히기 (1주)</h4>
+          <p>거울 앞에서 혀의 위치를 확인하며 L과 R을 천천히 발음합니다. L은 혀가 잇몸에 닿는 것을, R은 혀가 공중에 떠 있는 것을 눈으로 확인하세요. 하루 5분, 각각 20회씩.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>최소 대립어 청취 훈련 (1주)</h4>
+          <p>위의 최소 대립어 쌍을 원어민 음성으로 반복해서 듣습니다. 자신이 실제로 두 소리의 차이를 인식할 수 있을 때까지 듣기에 집중하세요. 귀가 먼저 구별해야 입도 구별할 수 있습니다.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>최소 대립어 발음 연습 (2주)</h4>
+          <p>각 쌍을 번갈아 발음하며 AI 피드백으로 정확도를 확인합니다. CODEPRON의 발음 연습 기능에서 L/R이 포함된 문장을 선택해 점수를 기록하고 매일 향상 정도를 추적하세요.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>실전 문장 적용 (ongoing)</h4>
+          <p>일상 영어 대화나 발표문에서 L/R이 포함된 단어를 의식하며 발음합니다. 처음에는 느리게, 점차 자연스러운 속도로 늘려가세요. 자동화될 때까지 의식적으로 훈련하는 것이 중요합니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <p><strong>기억하세요:</strong> 발음 교정은 단순한 연습량의 문제가 아니라 <strong>의식적인 근육 훈련</strong>입니다. 혀의 위치를 머릿속으로 인식하면서 발음하는 습관을 먼저 들이세요. 올바른 방법으로 반복하면 보통 4~6주 내에 눈에 띄는 변화를 느낄 수 있습니다.</p>
+    </div>
+
+    <a href="/" class="practice-cta">CODEPRON에서 L/R 발음 연습하기 →</a>
+
+    <div class="related">
+      <div class="related-title">함께 읽으면 좋은 글</div>
+      <div class="related-links">
+        <a href="/blog-th.html" class="related-link">TH 발음 완전 정복: θ와 ð, 이렇게 다릅니다 →</a>
+        <a href="/blog-tips.html" class="related-link">AI 피드백으로 영어 발음 교정하는 3단계 방법 →</a>
+        <a href="/guide.html" class="related-link">전체 영어 발음 가이드 보기 →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>
+      © 2026 CODEPRON &nbsp;·&nbsp;
+      <a href="privacy.html">개인정보처리방침</a> &nbsp;·&nbsp;
+      <a href="terms.html">이용약관</a> &nbsp;·&nbsp;
+      <a href="contact.html">문의하기</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
